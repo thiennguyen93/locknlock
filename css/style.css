@@ -5,20 +5,20 @@
 
 #header-2 > .left-icon {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -50px;
+    top: -15px;
 }
 
 #header-2 > .right-icon {
     position: absolute;
     right: 0;
-    top: 0;
+    top: -15px;
 }
 
 #header-2 > #logo {
     position: absolute;
-    top: -15px;
-    left: 50%;
+    top: -30px;
+    left: 45%;
 }
 
 #header-2 li {
@@ -26,3 +26,42 @@
     display: inline-block;
 }
 
+.header-menu {
+    position: relative;
+}
+
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+
+#header-menu {
+    
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    
+ }
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    
+ }
