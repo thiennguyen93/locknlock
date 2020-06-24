@@ -1,0 +1,28 @@
+#header-2 {
+    position: relative;
+    margin-top: 40px;
+}
+
+#header-2 > .left-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#header-2 > .right-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#header-2 > #logo {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+}
+
+#header-2 li {
+    list-style: none;
+    display: inline-block;
+}
+
