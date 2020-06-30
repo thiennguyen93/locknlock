@@ -186,6 +186,45 @@ a:hover, a:focus {
 .sanphamPrice {
     font-weight: 600;
 }
+.head_DM{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.head_DM h2{
+    font-size: 22px;
+}
+.list_box{
+    overflow: hidden;
+    position: relative;
+}
+.list_box ul {
+    margin-bottom: 0;
+    padding: 0;
+}
+.list_box p{
+    text-align: left;
+    color: #000;
+    font-size: 22px;
+    line-height: 35px;
+    border-bottom: 2px solid #000;
+    margin-bottom: 0;
+}
+.list_box span{
+    font-size: 15px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+.list_n_box{
+    overflow: hidden;
+}
+.list_n_banner{
+    float: left;
+    border: 1px solid #eee;
+    border-top: 0 none;
+}
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     #header-2 > #logo {
