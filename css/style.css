@@ -225,6 +225,9 @@ a:hover, a:focus {
     border: 1px solid #eee;
     border-top: 0 none;
 }
+.list_n_product{
+    float: left;
+}
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     #header-2 > #logo {
