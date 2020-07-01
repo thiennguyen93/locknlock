@@ -228,6 +228,15 @@ a:hover, a:focus {
 .list_n_product{
     float: left;
 }
+
+.box_item {
+    text-align: center;
+}
+
+.box_item img{
+    width: 200px;
+    height: 100%;
+}
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     #header-2 > #logo {
