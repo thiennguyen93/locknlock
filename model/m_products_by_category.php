@@ -1,5 +1,7 @@
 <?php 
-class sanpham {
+//Lấy random 6 sản phẩm nếu category có hiện trên FrontPage
+
+class m_products_by_category {
     private $db;
     function __construct()
     {
