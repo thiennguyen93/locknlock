@@ -1,0 +1,1 @@
+<div class="mr-top"><img src="./images/slide.jpg"></div>
