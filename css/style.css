@@ -221,12 +221,11 @@ a:hover, a:focus {
     overflow: hidden;
 }
 .list_n_banner{
-    float: left;
     border: 1px solid #eee;
     border-top: 0 none;
 }
-.list_n_product{
-    float: left;
+.catImg img{
+    width: 100%;
 }
 
 .box_item {
@@ -237,12 +236,23 @@ a:hover, a:focus {
     width: 200px;
     height: 100%;
 }
+
+.sanpham-item {
+    object-fit: cover;
+    border: #eeeeee 1px solid;
+}
+.sanpham-item img {
+    width: 100%;
+}
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     #header-2 > #logo {
         position: absolute;
         top: -30px;
         left: 23%;
+    }
+    .catImg {
+        display: none;
     }
  }
 
@@ -253,6 +263,9 @@ a:hover, a:focus {
         top: -30px;
         left: 23%;
     }
+    .catImg {
+        display: none;
+    }
  }
 
 /* // Medium devices (tablets, 768px and up) */
@@ -261,6 +274,9 @@ a:hover, a:focus {
         position: absolute;
         top: -30px;
         left: 30%;
+    }
+    .catImg {
+        display: none;
     }
  }
 
