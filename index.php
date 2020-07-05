@@ -21,7 +21,8 @@
 <body>
 
     <div id="wrapper">
-        <div id="header" class="container clearfix">
+    <header>
+    <div id="header" class="container clearfix">
             <div id="header-1">
                 <nav class="nav justify-content-end">
                     <a class="nav-link active" href="#">Đăng nhập</a>
@@ -105,6 +106,8 @@
                 </div>
             </nav>
         </div>
+    </header>
+
 
         <div id="content" class="container mt-3">
             <div id="slider">
