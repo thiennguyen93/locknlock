@@ -12,15 +12,15 @@
         {
             $this->hostname = 'localhost';
             $this->username = 'root';
-            $this->password = '';
-            $this->database = 'damme';
+            $this->password = '123456';
+            $this->database = 'locknlock';
             $this->connect();
         }
 
         private function connect(){
             if (!isset($this->connection)) {
                 $this->connection = new mysqli($this->hostname, $this->username, $this->password, $this->database);
-
+                $this->connection-> set_charset("utf8");
                 if(!$this->connection){
                     echo  'kết nối thất bại';
                     exit;

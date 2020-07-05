@@ -1,1 +1,0 @@
-select ten from danhmuc1 where id_danhmuc1 = "2"danhmuc1
