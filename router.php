@@ -15,3 +15,5 @@ switch ($controller) {
 
 $data = $controllerObject->{ $action }();
 $view = $data['view'];
+
+?>
