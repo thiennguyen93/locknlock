@@ -2,21 +2,7 @@
     include_once('./model/category.model.php');
     $cat = new category();
     $categoryData = $cat->getAllCategories();
-    function showParentCategories($categories) {
-        // Bước 1: Lấy danh sách category con
-        $cate_child = array();
-        foreach ($categories as $key => $item)
-        {
-            // Nếu là chuyên mục con thì hiển thị
-            if ($item['parentId'] == "" )
-            {
-                var_dump($item['name']);
-            }
-        }
-    }
-
-
-
+    
 ?>
 
 <div id="content" class="container mt-3">
@@ -38,14 +24,14 @@
                                     <div class="box_n_category">
                                         <h3><a href="#"><?=$item['name']?></a></h3>
                                         <ul class="list_n_category_1">
-                                            <li><a href="/goods/category.asp?cate=652&amp;BannerID=10023">Hộp kín
-                                                    hơi</a></li>
-                                            <li><a href="/goods/category.asp?cate=653&amp;BannerID=10023">Hộp nhựa</a>
+                                        <?php foreach($categoryData as $childKey => $childItem) {
+                                            if ( $childItem['parentId'] == $item['id'] )
+                                            {
+                                             ?>
+                                            <li><a href="/goods/category.asp?cate=655&amp;BannerID=10023"><?=$childItem['name']?></a>
                                             </li>
-                                            <li><a href="/goods/category.asp?cate=654&amp;BannerID=10023">Hủ gia vị</a>
-                                            </li>
-                                            <li><a href="/goods/category.asp?cate=655&amp;BannerID=10023">Nắp hộp kín
-                                                    hơi</a></li>
+                                            <?php }
+                                        }?>
                                         </ul>
                                     </div>
                                 </div>
