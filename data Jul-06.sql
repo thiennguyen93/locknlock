@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `parentId` int(11) DEFAULT NULL COMMENT 'id danh mục cha',
   `isFrontPage` char(50) DEFAULT 'N' COMMENT 'có hiện lên trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng sanh mục sản phẩm';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng danh mục sản phẩm';
 
 -- Dumping data for table locknlock.categories: ~64 rows (approximately)
 DELETE FROM `categories`;
@@ -97,6 +97,7 @@ INSERT INTO `categories` (`id`, `name`, `description`, `url_img`, `parentId`, `i
 	(62, 'Đèn', NULL, NULL, 10, 'N'),
 	(63, 'Tủ quần áo/ Tủ lắp ráp', NULL, NULL, 10, 'N'),
 	(64, 'Bàn trang điểm/ Gương', NULL, NULL, 10, 'N');
+	
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.contacts

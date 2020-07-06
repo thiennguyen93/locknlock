@@ -51,13 +51,27 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Danh mục sản phẩm</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
-                    </div>
-                </li>
+            <li class="dropdown"> <a href="../goods/main.asp?cate=634" class="dropdown-toggle" data-toggle="dropdown">DANH MỤC SẢN PHẨM<b class="caret"></b></a> 
+                    <ul class="dropdown-menu multi-column columns-2"> 
+                        <ul class="multi-column-dropdown"> 
+                            <li>
+                                <a href="../goods/main.asp?cate=634">Hộp bảo quản</a>
+                            </li> 
+                            <li>
+                                <a href="../goods/category.asp?cate=652">Hộp kín hơi</a>
+                            </li> 
+                            <li>
+                                <a href="../goods/category.asp?cate=653">Hộp nhựa</a>
+                            </li> 
+                            <li>
+                                <a href="../goods/category.asp?cate=654">Hủ gia vị</a>
+                            </li> 
+                            <li>
+                                <a href="../goods/category.asp?cate=655">Nắp hộp kín hơi</a>
+                            </li> 
+                        </ul> 
+                    </ul> 
+            </li> 
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sản phẩm bán chạy</a>
                 </li>

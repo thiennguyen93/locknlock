@@ -49,7 +49,9 @@
     position: relative
     ;
 }
-
+.dropdown-menu{
+    padding: .05rem 0;
+}
 .list_n_category {
     position: relative;
     z-index: 3;
@@ -356,7 +358,12 @@ a:hover, a:focus {
         width: 600px;
     }
  }
-
+ @media (max-width: 767px) { 
+    .dropdown-menu.multi-column { 
+    min-width: 240px !important; 
+    overflow-x: hidden;
+    }
+    }
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
     .footer-menu-item {
