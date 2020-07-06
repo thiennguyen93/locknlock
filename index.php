@@ -38,65 +38,12 @@ include 'router.php';
         <!-- /SLIDER & CATEGORY -->
 
 
+        <?php include_once './view/'.$view; ?>
 
 
-        <div class=" container list_DM">
-            <div class="head_DM">
-                <h2>DANH MỤC SẢN PHẨM</h2>
-                <span>Bạn có thể xem được sản phẩm đa dạng của LOCK&LOCK</span>
-            </div>
-            <div class="list_box">
-                <ul class="">
-                    <li>
-                        <p>BÌNH NƯỚC</p>
-                        <span>
-                            <a href="http://118.69.170.90/goods/category.asp?cate=124">Xem thêm &gt;</a>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div class="list_n_box">
-                <div class="row">
-                    <div class="catImg col-lg-5">
-                        <img src="./img/skin/CA_water_bottle.png" alt="">
-                    </div>
-                    <div class="col-12 col-lg-7">
-                        <div class="row">
-                            <div class="sanpham-item col-6 col-md-4">
-                                <img src="img/products/201806157274562.jpg" alt="" srcset="">
-                                <p>Bình nhựa đựng nước Lock&Lock dung tích 520ml</p>
-                                <strong>198,000đ</strong>
-                            </div>
-                            <div class="sanpham-item col-6 col-md-4">
-                                <img src="img/products/201806157274562.jpg" alt="" srcset="">
-                                <p>Bình nhựa đựng nước Lock&Lock dung tích 520ml</p>
-                                <strong>198,000đ</strong>
-                            </div>
-                            <div class="sanpham-item col-6 col-md-4">
-                                <img src="img/products/201806157274562.jpg" alt="" srcset="">
-                                <p>Bình nhựa đựng nước Lock&Lock dung tích 520ml</p>
-                                <strong>198,000đ</strong>
-                            </div>
-                            <div class="sanpham-item col-6 col-md-4">
-                                <img src="img/products/201806157274562.jpg" alt="" srcset="">
-                                <p>Bình nhựa đựng nước Lock&Lock dung tích 520ml</p>
-                                <strong>198,000đ</strong>
-                            </div>
-                            <div class="sanpham-item col-6 col-md-4">
-                                <img src="img/products/201806157274562.jpg" alt="" srcset="">
-                                <p>Bình nhựa đựng nước Lock&Lock dung tích 520ml</p>
-                                <strong>198,000đ</strong>
-                            </div>
-                            <div class="sanpham-item col-6 col-md-4">
-                                <img src="img/products/201806157274562.jpg" alt="" srcset="">
-                                <p>Bình nhựa đựng nước Lock&Lock dung tích 520ml</p>
-                                <strong>198,000đ</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
 
         <div id="footer" class="mt-5 mb-1">
             <div class="container">

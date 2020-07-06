@@ -14,6 +14,6 @@ switch ($controller) {
 }
 
 $data = $controllerObject->{ $action }();
-$view = $data['view'];
+$view = $data['view'] . '.view.php';
 
 ?>
