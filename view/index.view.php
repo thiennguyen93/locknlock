@@ -1,6 +1,4 @@
-<?php 
-foreach ($data['data'] as $key => $item) {
-    // var_dump($item['product']); ?>
+
 
 
 <div class=" container list_DM">
@@ -8,6 +6,11 @@ foreach ($data['data'] as $key => $item) {
                 <h2>DANH MỤC SẢN PHẨM</h2>
                 <span>Bạn có thể xem được sản phẩm đa dạng của LOCK&LOCK</span>
             </div>
+<?php 
+foreach ($data['data'] as $key => $item) {
+    // var_dump($item['product']); ?>
+    <div class="mb-5">
+
             <div class="list_box">
                 <ul class="">
                     <li>
@@ -36,9 +39,9 @@ foreach ($data['data'] as $key => $item) {
                     </div>
                 </div>
             </div>
+            </div>
+<?php }
+?>
         </div>
 
 
-
-<?php }
-?>

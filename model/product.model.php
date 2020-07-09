@@ -13,8 +13,8 @@ class productHome {
     }
 
     public function getProductInCategory($CatId) {
-        $sql = 'SELECT * FROM products P INNER JOIN categories C ON C.parentId = '.$CatId.'
-        WHERE P.categoryID IN (SELECT id FROM categories C1 WHERE C1.id = '.$CatId.' OR C1.parentId='.$CatId.') LIMIT 6';
+        $sql = 'SELECT * FROM products P WHERE P.categoryID IN (SELECT id FROM categories C1 WHERE C1.id = '.$CatId.' OR C1.parentId='.$CatId.') LIMIT 6';
+        var_dump($sql);
         $this->db->execute($sql);
         return $this->db->getAllData();
     }
