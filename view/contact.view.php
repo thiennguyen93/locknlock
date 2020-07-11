@@ -7,9 +7,16 @@
                 </div>
                 <div class="card-body">
                     <form>
+                        <?php
+                            //Nếu user đã đăng nhập
+                            // $userId = isset($_SESSION['user_info']['id'])
+                            $userHoten = isset($_SESSION['user_info']['hoten']) ? $_SESSION['user_info']['hoten'] : '';
+                            $userHotenReadOnly = $userHoten!=''?'disabled':'';
+                        ?>
+                        <input type="hidden" name="userId" value="">
                         <div class="form-group">
                             <label for="name">Tên</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nhập tên" required="">
+                            <input <?=$userHotenReadOnly?> type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nhập tên" required="" value="<?=$userHoten?>">
                         </div>
                         <div class="form-group">
                             <label for="email">Địa chỉ email</label>
