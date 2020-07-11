@@ -24,7 +24,7 @@ class controller
                     //Nếu đăng nhập thành công --> cài đặt SESSION --> Chào mừng người dùng 
                     $user_info = $model->getUserInfo($username);
                     $_SESSION['user_info'] = $user_info;    
-                    var_dump($user_info);
+                    // var_dump($user_info);
                     $data = [
                         'view' => 'welcome',
                         'username' => $username,

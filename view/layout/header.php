@@ -1,11 +1,8 @@
 <div id="header" class="container clearfix">
     <div id="header-1">
-        <nav class="nav justify-content-end">
-            <a class="nav-link active" href="#">Đăng nhập</a>
-            <a class="nav-link" href="#">Gia nhập thành viên</a>
-            <a class="nav-link disabled" href="#">My Page</a>
-            <a class="nav-link disabled" href="#">Chăm sóc cách hàng</a>
-        </nav>
+        <?php 
+            include_once('./view/layout/top_user_area.php');
+        ?>
     </div>
     <div id="header-2" class="clearfix">
         <ul class='left-icon'>
@@ -58,7 +55,7 @@
                     <a class="nav-link" href="products.php">Sản phẩm mới</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.php">Giới thiệu</a>
+                    <a class="nav-link" href="post.php?id=2">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Liên hệ</a>
