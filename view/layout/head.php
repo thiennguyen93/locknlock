@@ -1,12 +1,5 @@
-<?php 
-include './lib/database.php';
-include 'router.php';
-?>
-<!doctype html>
-<html lang="en">
-
 <head>
-    <title>Title</title>
+    <title>Trang sản phẩm</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,35 +12,4 @@ include 'router.php';
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
-
-<body>
-
-    <div id="wrapper">
-        <!-- HEADER -->
-        <?php
-            include_once('./view/layout/header.php');
-        ?>
-        <!-- /HEADER -->
-
-        <?php include_once './view/product_detail.view.php' ?>
-
-
-        <!-- FOOTER -->
-        <?php
-            include_once('./view/layout/footer.php');
-        ?>
-        <!-- /FOOTER -->
-
-
-
-    <!-- Kiểm tra 11  dfs-->
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-
-</body>
-
-</html>

@@ -1,6 +1,6 @@
 <?php
 include './model/product.model.php';
-class indexController {
+class controller {
     public function home() {
           $model = new productHome();
           $data = $model->getCategoryFrontPage();

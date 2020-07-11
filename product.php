@@ -1,5 +1,6 @@
+<!-- TRANG SẢN PHẨM -->
 <?php
-$controller = "index";
+$controller = 'product';
 include './lib/database.php';
 include 'router.php';
 ?>
@@ -19,14 +20,10 @@ include_once('./view/layout/head.php');
         ?>
         <!-- /HEADER -->
 
-        <!-- SLIDER & CATEGORY -->
-        <?php
-        include_once('./view/layout/slider.php');
-        ?>
-        <!-- /SLIDER & CATEGORY -->
 
 
-        <?php include_once './view/' . $view; ?>
+
+        <?php include_once './view/product_detail.view.php' ?>
 
 
         <!-- FOOTER -->
