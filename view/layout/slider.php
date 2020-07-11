@@ -70,7 +70,7 @@
             <!-- Sản phẩm bán chạy -->
             <div class="zone">
                 <div class="zone_title">
-                    <span class="zone_caption text-uppercase ">Sản phẩm bản chạy</span>
+                    <span class="zone_caption text-uppercase ">Sản phẩm mới</span>
                     <span class="more ml-3"><a href="/goods/best.asp?mall_type=0&amp;BannerID=10034"> Xem thêm</a>
                     </span>
                 </div>

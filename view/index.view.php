@@ -28,11 +28,13 @@
                         <div class="row">
                             <?php foreach ($item['product'] as $key => $itemProduct) { ?>
                                 <div class="sanpham-item col-6 col-md-4">
-                                    <a class="product-detail-url" href="product.php?id=<?= $itemProduct['id'] ?>">
-                                        <img src="./img/products/<?= $itemProduct['thumbnail_url'] ?>" alt="" srcset="">
-                                        <p><?= $itemProduct['name'] ?></p>
-                                        <strong><?= $fmt->formatCurrency($itemProduct['price'],"VND") ?></strong>
-                                    </a>
+                                    <div class="sanpham-item-name">
+                                        <a class="product-detail-url" href="product.php?id=<?= $itemProduct['id'] ?>">
+                                            <img src="./img/products/<?= $itemProduct['thumbnail_url'] ?>" alt="" srcset="">
+                                            <p><?= $itemProduct['name'] ?></p>                                   
+                                        </a>
+                                    </div>
+                                    <strong><?= $fmt->formatCurrency($itemProduct['price'],"VND") ?></strong>
                                 </div>
 
                             <?php } ?>

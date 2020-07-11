@@ -273,6 +273,10 @@ a:hover, a:focus {
     color: black;
 }
 
+.sanpham-item-name {
+    min-height: 312px;
+}
+
 #footer {
     border-top: #000 2px solid;
 }
