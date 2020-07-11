@@ -1,6 +1,3 @@
-<?php
-    var_dump($data)
-?>
 <div id="header-breadcrumbs" class="border-top navbreadcrumbs-mini">
     <nav class="navbar navbar-expand-lg navbar-light bg-white container py-1">
         <ol class="breadcrumb py-1 my-0">
@@ -14,17 +11,17 @@
     <div id="product-detail">
         <div class="product-title">
             <h6>LOCK&LOCK</h6>
-            <h5>Bộ Túi Hộp Cơm Thủy Tinh Lock&Lock 4EA LLG224I3 (750ml)</h5>
-            <p>LLG224I3</p>
+            <h5><?=$data['product']['name']?></h5>
+            <p><?=$data['product']['description']?></p>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class='product-detail-img' src="http://www.locknlock.vn/data/base/goods/big/201814150559907.jpg" alt="" srcset="">
+                <img class='product-detail-img' src="./img/products/<?=$data['product']['thumbnail_url']?>" alt="" srcset="">
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="row">
                     <div class="col-3 pt-3">Giá bán</div>
-                    <div class="col-9 product-detail-price">697,000đ</div>
+                    <div class="col-9 product-detail-price"><?=$fmt->formatCurrency($data['product']['price'],"VND")?></div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-3">Số lượng</div>
