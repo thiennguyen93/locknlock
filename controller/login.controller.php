@@ -27,7 +27,8 @@ class controller
                     var_dump($user_info);
                     $data = [
                         'view' => 'welcome',
-                        'name' => $username,
+                        'username' => $username,
+                        'name' => $user_info['hoten'],
                         'title' => $user_info['chucvu'],
                         'adminPage' => $user_info['adminPage']
                     ];      
