@@ -62,7 +62,7 @@
 
 
 <?php } else { 
-    include_once('./view/404error.php');
+    include_once('./view/layout/404product.php');
 }
 ?>
 

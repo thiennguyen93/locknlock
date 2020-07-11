@@ -2,7 +2,7 @@
     <div class="row  d-flex align-items-center justify-content-center">
         <div class="col-md-12 text-center">
             <h1 class="big-text">Rất tiếc!</h1>
-            <h2 class="small-text">404 - Không tìm thấy trang</h2>
+            <h2 class="small-text">404 - Không tìm thấy trang này</h2>
 
         </div>
         <div class="col-md-6  text-center">
