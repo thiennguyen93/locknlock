@@ -30,6 +30,27 @@
     position: relative;
 }
 
+#header-breadcrumbs {
+    border-bottom: 1px solid #dee2e6!important;
+    min-height: 30px;
+}
+
+.product-detail-img {
+    max-width: 500px !important;
+    width: auto;
+}
+.product-detail-price {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.nav-tabs > .nav-item .active {
+    background-color: #333;
+    color: white;
+}
+.navbreadcrumbs-mini {
+    min-height: 50px;
+}
 .clearfix:after {
     content: ".";
     visibility: hidden;
