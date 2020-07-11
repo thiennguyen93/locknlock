@@ -41,11 +41,8 @@ include 'router.php';
         <?php include_once './view/'.$view; ?>
 
 
-        <!-- FOOTER -->
-        <?php
-            include_once('./view/layout/footer.php');
-        ?>
-        <!-- /FOOTER -->
+
+
 
 
 
@@ -65,14 +62,7 @@ include 'router.php';
     <!-- JavaScript -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-<script>
-    $('.main-carousel').flickity({
-        // options
-        cellAlign: 'left',
-        contain: true,
-        autoPlay: true
-    });
-</script>
+
 
 </body>
 
