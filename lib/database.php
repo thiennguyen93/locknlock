@@ -38,7 +38,7 @@
         //lấy dữ liệu
         public function getData(){
             if ($this->result) {
-                $data = mysqli_fetch_array($this->result);
+                $data = mysqli_fetch_assoc($this->result);
             }else{
                 $data = 0;
             }

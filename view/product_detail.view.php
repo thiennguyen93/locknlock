@@ -1,3 +1,6 @@
+<?php
+    var_dump($data)
+?>
 <div id="header-breadcrumbs" class="border-top navbreadcrumbs-mini">
     <nav class="navbar navbar-expand-lg navbar-light bg-white container py-1">
         <ol class="breadcrumb py-1 my-0">

@@ -2,16 +2,14 @@
 include './model/product.model.php';
 class controller
 {
-    public function
-    default()
-    {
-        $id = (int) $_GET['id'];
+    public function default(){
+        $id = (int) $_GET['id'];        //Lấy ID của sản phẩm truyền từ URL E.g '/product.php?id=5'
         $model = new default_model();
-        $data = $model->getCategoryFrontPage();
-        $catOnFrontPage = array();
+        $data = $model->getProductInfo($id);
+        var_dump($data);
         return [
             'view' => 'product_detail',
-            'data' => $catOnFrontPage
+            'data' => $data
         ];
     }
 }
