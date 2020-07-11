@@ -23,7 +23,7 @@ include_once('./view/layout/head.php');
 
 
 
-        <?php include_once './view/product_detail.view.php' ?>
+        <?php include_once './view/' . $view; ?>
 
 
         <!-- FOOTER -->

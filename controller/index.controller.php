@@ -1,8 +1,8 @@
 <?php
 include './model/product.model.php';
 class controller {
-    public function home() {
-          $model = new productHome();
+    public function default() {
+          $model = new default_model();
           $data = $model->getCategoryFrontPage();
           $catOnFrontPage = array();
 

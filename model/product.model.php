@@ -1,5 +1,5 @@
 <?php 
-class productHome {
+class default_model {
     private $db;
     function __construct()
     {
@@ -18,5 +18,9 @@ class productHome {
         return $this->db->getAllData();
     }
 
-
+    public function getProductInfo($productId) {
+        $sql = 'SELECT * FROM products P WHERE P.ID='.$productId.' LIMIT 1';
+        $this->db->execute($sql);
+        return $this->db->getData();
+    }
 }
