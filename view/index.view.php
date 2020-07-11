@@ -31,7 +31,7 @@ foreach ($data['data'] as $key => $item) {
                             <?php foreach ($item['product'] as $key => $itemProduct) {?>
                             <div class="sanpham-item col-6 col-md-4">
                                 <img src="./img/products/<?=$itemProduct['thumbnail_url'] ?>" alt="" srcset="">
-                                <p><?=$itemProduct[1] ?></p>
+                                <p><?=$itemProduct['name'] ?></p>
                                 <strong><?=$itemProduct['price'] ?></strong>
                             </div>
                         <?php } ?>
