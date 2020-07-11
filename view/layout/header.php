@@ -1,3 +1,6 @@
+<?php
+    $activePage = isset($_GET['activePage'])?$_GET['activePage']:'index';
+?>
 <div id="header" class="container clearfix">
     <div id="header-1">
         <?php 
@@ -48,17 +51,17 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                <a class="nav-link" href="index.php">Trang chủ</a>
+                <li class="nav-item">
+                <a class="nav-link <?=$activePage=='index'?'active':'' ?>" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="products.php">Sản phẩm mới</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post.php?id=2">Giới thiệu</a>
+                    <a class="nav-link <?=$activePage=='about'?'active':'' ?>" href="post.php?id=2&activePage=about">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Liên hệ</a>
+                    <a class="nav-link <?=$activePage=='contact'?'active':'' ?>" href="contact.php?activePage=contact">Liên hệ</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

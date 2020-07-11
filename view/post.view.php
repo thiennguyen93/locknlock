@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-3">
     <!-- show bài viết trên trang này -->
     <!-- Tiêu đề bài viết -->
     <h3><?=$data['post']['title']?></h3> 
