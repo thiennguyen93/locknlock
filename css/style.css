@@ -269,6 +269,10 @@ a:hover, a:focus {
     width: 100%;
 }
 
+.product-detail-url {
+    color: black;
+}
+
 #footer {
     border-top: #000 2px solid;
 }

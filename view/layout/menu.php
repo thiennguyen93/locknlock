@@ -1,7 +1,7 @@
 <nav>
     <ul class="menu">
-        <li><a href="">Trang chủ</a></li>
-        <li><a>Giới thiệu</a></li>
+        <li><a href="index.php">Trang chủ</a></li>
+        <li><a href="about.php">Giới thiệu</a></li>
         <li><a>Dịch vụ</a></li>
         <li>
             <a>Sản phẩm</a>

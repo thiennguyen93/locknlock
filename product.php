@@ -19,13 +19,7 @@ include_once('./view/layout/head.php');
         include_once('./view/layout/header.php');
         ?>
         <!-- /HEADER -->
-
-
-
-
         <?php include_once './view/' . $view; ?>
-
-
         <!-- FOOTER -->
         <?php
         include_once('./view/layout/footer.php');
