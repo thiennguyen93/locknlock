@@ -36,8 +36,9 @@
 }
 
 .product-detail-img {
-    max-width: 500px !important;
+    max-width: 300px !important;
     width: auto;
+    object-fit: cover;
 }
 .product-detail-price {
     font-weight: bold;

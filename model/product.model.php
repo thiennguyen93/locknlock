@@ -19,8 +19,12 @@ class default_model {
     }
 
     public function getProductInfo($productId) {
-        $sql = 'SELECT * FROM products P WHERE P.ID='.$productId.' LIMIT 1';
+        $sql = 'SELECT * FROM products P INNER JOIN posts A ON P.postId = A.id WHERE P.ID='.$productId.' LIMIT 1';
         $this->db->execute($sql);
         return $this->db->getData();
     }
+
+
+
+
 }
