@@ -1,6 +1,3 @@
-<?php 
-    session_start();
-?>
 <head>
     <title>Trang sản phẩm</title>
     <!-- Required meta tags -->

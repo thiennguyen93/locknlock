@@ -5,7 +5,6 @@ class controller
 {
     public function default(){
         $data = ["view"=>"404error"];
-        var_dump( $_SESSION['user_info']);
         if (!isset($_SESSION['user_info'])) {
             //Nếu user chưa đăng nhập
             if ((!isset($_POST['username']) || $_POST['username']=="")) {
@@ -21,14 +20,17 @@ class controller
                 $username = $_POST['username'];
                 $password = isset($_POST['password'])?$_POST['password']:"";
                 $isLoginCorrect = $model->checkLoginInfo($username, $password);
-                var_dump($isLoginCorrect);
                 if ($isLoginCorrect) {
                     //Nếu đăng nhập thành công --> cài đặt SESSION --> Chào mừng người dùng 
                     $user_info = $model->getUserInfo($username);
-                    $_SESSION['user_info'] = $user_info;
-                    var_dump( $_SESSION['user_info']);
-                    
-                    
+                    $_SESSION['user_info'] = $user_info;    
+                    var_dump($user_info);
+                    $data = [
+                        'view' => 'welcome',
+                        'name' => $username,
+                        'title' => $user_info['chucvu'],
+                        'adminPage' => $user_info['adminPage']
+                    ];      
                 } else {
                     //Nếu đăng nhập thất bại --> Trả về thông báo
                     $data = [
