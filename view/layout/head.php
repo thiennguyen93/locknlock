@@ -15,4 +15,6 @@
 
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<?php $fmt = new NumberFormatter( 'vn_VI', NumberFormatter::CURRENCY ); ?>
+
+
+<?php //$fmt = new NumberFormatter( 'vn_VI', NumberFormatter::CURRENCY ); ?>

@@ -18,15 +18,19 @@ include_once('./view/layout/breadcrumb.php');
                             <div class="form-group">
                                 <input class="form-control" placeholder="Mật khẩu" name="password" type="password" value="" required>
                             </div>
-                            <div class="checkbox">
+                            <!-- <div class="checkbox">
                                 <label>
                                     <input name="remember" type="checkbox" value="Remember Me"> Ghi nhớ thông tin đăng nhập
                                 </label>
-                            </div>
+                            </div> -->
                             <?=@$data['notification']?>
-                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Đăng nhập">
                         </fieldset>
                     </form>
+                    <div class="mt-2">
+                        <a href="register.php">Bạn chưa là thành viên? Click vào đây để đăng ký</a>
+                    </div>
+                    
                 </div>
             </div>
         </div>

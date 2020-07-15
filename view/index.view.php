@@ -34,7 +34,7 @@
                                             <p><?= $itemProduct['name'] ?></p>                                   
                                         </a>
                                     </div>
-                                    <strong><?=$fmt->formatCurrency($itemProduct['price'],"VND") ?></strong>
+                                    <strong><?php echo number_format($itemProduct['price']) ?> đ</strong>
                                 </div>
 
                             <?php } ?>
