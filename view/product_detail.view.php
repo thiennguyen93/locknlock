@@ -19,7 +19,7 @@
             <div class="col-md-6 col-sm-12">
                 <div class="row">
                     <div class="col-3 pt-3">Giá bán</div>
-                    <div class="col-9 product-detail-price"><?=$fmt->formatCurrency($data['product']['price'],"VND")?></div>
+                    <div class="col-9 product-detail-price"><?=number_format($data['product']['price'])?>đ</div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-3">Số lượng</div>
