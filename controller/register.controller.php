@@ -4,6 +4,35 @@ class controller
 {
     public function default(){
         $data = ["view"=>"404error"];
+
+        $username = isset($_POST['username'])?$_POST['username']:"";
+        $password = isset($_POST['password'])?$_POST['password']:"";
+        $email = isset($_POST['email'])?$_POST['email']:"";
+        $fullname = isset($_POST['fullname'])?$_POST['fullname']:"";
+        
+        $account['username'] = $username;
+        $account['password'] = $password;
+        $account['email'] = $email;
+        $account['fullname'] = $fullname;
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
         if (!isset($_SESSION['user_info'])) {
             //Nếu user chưa đăng nhập
             if ((!isset($_POST['username']) || $_POST['username']=="")) {
