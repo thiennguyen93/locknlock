@@ -47,18 +47,7 @@ class controller
                 ];
             }
         }
-
-               
-        
-
-        
-        
-        
         return $data;
     }
 } 
-        
-        
-    
-
 ?>
