@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server version:               5.7.26 - MySQL Community Server (GPL)
+-- Host:                         localhost
+-- Server version:               10.4.13-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.2.0.5599
+-- HeidiSQL Version:             11.0.0.5919
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,12 +22,12 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id của danh mục',
   `name` varchar(50) DEFAULT NULL COMMENT 'tên danh mục',
-  `description` text COMMENT 'mô tả danh mục',
-  `url_img` text COMMENT 'source ảnh danh mục',
+  `description` text DEFAULT NULL COMMENT 'mô tả danh mục',
+  `url_img` text DEFAULT NULL COMMENT 'source ảnh danh mục',
   `parentId` int(11) DEFAULT NULL COMMENT 'id danh mục cha',
   `isFrontPage` char(50) DEFAULT 'N' COMMENT 'có hiện lên trang chủ hay không',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng sanh mục sản phẩm';
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COMMENT='Bảng sanh mục sản phẩm';
 
 -- Dumping data for table locknlock.categories: ~64 rows (approximately)
 DELETE FROM `categories`;
@@ -99,6 +99,23 @@ INSERT INTO `categories` (`id`, `name`, `description`, `url_img`, `parentId`, `i
 	(64, 'Bàn trang điểm/ Gương', NULL, NULL, 10, 'N');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
+-- Dumping structure for table locknlock.comments
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL DEFAULT 0,
+  `userName` varchar(50) NOT NULL DEFAULT '0' COMMENT 'Này dành cho comment của những user không đăng nhập',
+  `productId` int(11) NOT NULL DEFAULT 0 COMMENT 'id bình luận theo sản phẩm',
+  `postId` varchar(11) NOT NULL DEFAULT '0' COMMENT 'id bình luận theo bài viết',
+  `comment` varchar(1000) NOT NULL DEFAULT '0' COMMENT 'Nội dung bình luận',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- Dumping data for table locknlock.comments: 0 rows
+DELETE FROM `comments`;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+
 -- Dumping structure for table locknlock.contacts
 DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
@@ -106,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `email` varchar(50) DEFAULT NULL COMMENT 'email khách hàng',
   `name` varchar(50) DEFAULT NULL COMMENT 'tên khách hàng',
   `subject` varchar(50) DEFAULT NULL COMMENT 'chủ đề liên hệ',
-  `content` text COMMENT 'Nội dung',
+  `content` text DEFAULT NULL COMMENT 'Nội dung',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Bảng liên hệ';
 
@@ -119,9 +136,9 @@ DELETE FROM `contacts`;
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id bài viết',
-  `content` text CHARACTER SET utf8mb4 COMMENT 'Nội dung HTML bài viết',
+  `content` text CHARACTER SET utf8mb4 DEFAULT NULL COMMENT 'Nội dung HTML bài viết',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bài viết về sản phẩm';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Bài viết về sản phẩm';
 
 -- Dumping data for table locknlock.posts: ~0 rows (approximately)
 DELETE FROM `posts`;
@@ -135,36 +152,54 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID sản phẩm',
   `name` varchar(200) DEFAULT NULL COMMENT 'Tên sản phẩm',
-  `description` tinytext COMMENT 'Mô tả sơ lược về sản phẩm',
-  `price` int(11) DEFAULT '0' COMMENT 'Giá sản phẩm',
-  `postID` int(11) DEFAULT '0' COMMENT 'Bài viết về sản phẩm',
+  `description` tinytext DEFAULT NULL COMMENT 'Mô tả sơ lược về sản phẩm',
+  `price` int(11) DEFAULT 0 COMMENT 'Giá sản phẩm',
+  `postID` int(11) DEFAULT 0 COMMENT 'Bài viết về sản phẩm',
   `categoryID` int(11) DEFAULT NULL,
   `thumbnail_url` varchar(50) DEFAULT NULL COMMENT 'url hình sản phẩm thu nhỏ',
+  `created` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Sảng phẩm';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='Sảng phẩm';
 
 -- Dumping data for table locknlock.products: ~11 rows (approximately)
 DELETE FROM `products`;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `postID`, `categoryID`, `thumbnail_url`) VALUES
-	(1, 'Bộ 3 hộp thủy tinh L&L Euro (LLG214*2, LLG224*1)', 'Sản phẩm tiện dụng', 570000, 0, 11, '1.jpg'),
-	(2, 'HPL550- Hộp bảo quản gạo bằng nhựa Lock&Lock 12kg', NULL, 290000, 0, 11, '2.jpg'),
-	(3, 'Hộp nhựa L&L Twist Two way 760ml+310ml - Nắp màu đỏ', NULL, 99000, 0, 12, '3.jpg'),
-	(5, 'Hộp nhựa L&L Twist Two way 560ml+310ml - Nắp màu đỏ', NULL, 95000, 0, 12, '4.jpg'),
-	(6, 'Chảo nhôm sâu lòng chống dính BAUM Marble 30cm, 1 tay cầm, nắp thủy tinh, hiệu L&L', NULL, 759000, 0, 15, '5.jpg'),
-	(7, 'Chảo nhôm sâu lòng chống dính BAUM Marble 28cm, 1 tay cầm, nắp thủy tinh, hiệu L&L', NULL, 669000, 1, 15, '6.jpg'),
-	(8, 'Nồi nhôm chống dính BAUM Marble 24cm, 2 tay cầm, nắp thủy tinh, hiệu L&L', NULL, 749000, 0, 16, '7.jpg'),
-	(9, 'Bộ nồi ZEN COOK BALLOON bằng sứ ( 2 cái nồi + 2 cái nắp)', NULL, 2000000, 0, 16, '8.jpg'),
-	(10, 'Bộ 3 Tô Trộn Thủy Tinh Chịu Nhiệt Boroseal Lock&Lock LLG013S3 (1.5L / Tô)', NULL, 589000, 0, 18, '9.jpg'),
-	(11, 'CKK101S5BLK - Bộ dao nhà bếp 5 món COOKPLUS Lock & Lock (Dao: 4 cái ; Dụng cụ gọt vỏ trái cây: 1 cái', NULL, 250000, 0, 21, '10.jpg'),
-	(12, 'Bộ 2 thớt gỗ cây cao su (1 thớt hình chữ nhật + 1 thớt ping pong)', NULL, 350000, 0, 22, '11.jpg');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `postID`, `categoryID`, `thumbnail_url`, `created`) VALUES
+	(1, 'Bộ 3 hộp thủy tinh L&L Euro', 'LLG214*2, LLG224*1', 570000, 0, 11, '1.jpg', '2020-07-10 13:41:25'),
+	(2, 'HPL550- Hộp bảo quản gạo bằng nhựa Lock&Lock 12kg', NULL, 290000, 0, 11, '2.jpg', '2020-07-11 12:41:26'),
+	(3, 'Hộp nhựa L&L Twist Two way 760ml+310ml - Nắp màu đỏ', NULL, 99000, 0, 12, '3.jpg', '2020-07-11 09:41:26'),
+	(5, 'Hộp nhựa L&L Twist Two way 560ml+310ml - Nắp màu đỏ', NULL, 95000, 0, 12, '4.jpg', '2020-07-10 14:41:27'),
+	(6, 'Chảo nhôm sâu lòng chống dính BAUM Marble 30cm, 1 tay cầm, nắp thủy tinh, hiệu L&L', NULL, 759000, 0, 15, '5.jpg', '2020-06-11 14:41:28'),
+	(7, 'Chảo nhôm sâu lòng chống dính BAUM Marble 28cm, 1 tay cầm, nắp thủy tinh, hiệu L&L', NULL, 669000, 1, 15, '6.jpg', '2020-05-11 14:41:29'),
+	(8, 'Nồi nhôm chống dính BAUM Marble 24cm, 2 tay cầm, nắp thủy tinh, hiệu L&L', NULL, 749000, 0, 16, '7.jpg', '2020-07-16 14:41:29'),
+	(9, 'Bộ nồi ZEN COOK BALLOON bằng sứ', '2 cái nồi + 2 cái nắp', 2000000, 0, 16, '8.jpg', '2020-07-11 06:41:30'),
+	(10, 'Bộ 3 Tô Trộn Thủy Tinh Chịu Nhiệt Boroseal Lock&Lock ', 'LLG013S3 (1.5L / Tô)', 589000, 0, 18, '9.jpg', '2020-07-12 06:41:31'),
+	(11, 'CKK101S5BLK - Bộ dao nhà bếp 5 món COOKPLUS Lock & Lock', 'Dao: 4 cái ; Dụng cụ gọt vỏ trái cây: 1 cái', 250000, 0, 21, '10.jpg', '2020-05-11 10:41:32'),
+	(12, 'Bộ 2 thớt gỗ cây cao su', '1 thớt hình chữ nhật + 1 thớt ping pong', 350000, 0, 22, '11.jpg', '2020-03-11 08:41:32');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
+
+-- Dumping structure for table locknlock.role
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã vai trò',
+  `name` varchar(50) NOT NULL DEFAULT '0' COMMENT 'Tên vai trò',
+  `adminPage` int(1) NOT NULL DEFAULT 0 COMMENT 'Quyền truy cập trang Admin Y(1)/N(0)',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Bảng phân quyền';
+
+-- Dumping data for table locknlock.role: 2 rows
+DELETE FROM `role`;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` (`id`, `name`, `adminPage`) VALUES
+	(1, 'Quản trị viên', 1),
+	(2, 'Khách hàng', 0);
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.specs
 DROP TABLE IF EXISTS `specs`;
 CREATE TABLE IF NOT EXISTS `specs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `productID` int(11) DEFAULT '0' COMMENT 'ID sản phẩm',
+  `productID` int(11) DEFAULT 0 COMMENT 'ID sản phẩm',
   `name` varchar(50) DEFAULT NULL COMMENT 'Tên thuộc tính',
   `value` varchar(50) DEFAULT NULL COMMENT 'Giá trị của thuộc tính',
   PRIMARY KEY (`id`)
@@ -183,15 +218,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `hoten` varchar(50) NOT NULL DEFAULT '0' COMMENT 'Họ tên người dùng',
   `email` varchar(50) NOT NULL DEFAULT '0' COMMENT 'email',
   `password` varchar(50) NOT NULL DEFAULT '0' COMMENT 'mật khẩu',
+  `roleId` int(11) DEFAULT NULL COMMENT 'Phân loại quyền',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Bảng thông tni người dùng';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='Bảng thông tni người dùng';
 
--- Dumping data for table locknlock.users: ~2 rows (approximately)
+-- Dumping data for table locknlock.users: ~6 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `username`, `hoten`, `email`, `password`) VALUES
-	(1, 'admin', 'Nguyễn Ngọc Phước Thiện', 'info@thiennguyenpro.com', '123456'),
-	(2, 'manager', 'Nguyễn Thiện Nhân', 'thiennhan@gmail.com', '123456');
+INSERT INTO `users` (`id`, `username`, `hoten`, `email`, `password`, `roleId`) VALUES
+	(1, 'admin', 'Nguyễn Ngọc Phước Thiện', 'info@thiennguyenpro.com', '123456', 1),
+	(2, 'user1', 'Nguyễn Thiện Nhân', 'thiennhan@gmail.com', '123456', 2),
+	(8, 'haipv', 'Phạm Văn Hải', 'haipv@thiennguyenpro.com', '123', 2),
+	(9, 'anv', 'Nguyễn Văn A', 'nguyenvana@gmail.com', '123', 2),
+	(10, 'linhnv', 'Nguyễn Văn Linh', 'linhnv@gmail.com', '123', 2),
+	(11, 'duclh', 'Lê Huỳnh Đức', 'duclh@gmail.com', '123', 2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
