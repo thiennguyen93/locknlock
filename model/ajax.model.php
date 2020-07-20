@@ -14,4 +14,12 @@ class default_model {
         return (int) $result['ketqua'];
     }
 
+    public function checkEmailAvailable($email) {
+        $username = addslashes($email);
+        $sql = 'SELECT COUNT(id) AS ketqua FROM users U WHERE U.email = \''.$email.'\' LIMIT 1';
+        $this->db->execute($sql);
+        $result = $this->db->getData();
+        return (int) $result['ketqua'];
+    }
+
 }

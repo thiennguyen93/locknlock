@@ -3,78 +3,62 @@ include './model/register.model.php';
 class controller
 {
     public function default(){
-        $data = ["view"=>"404error"];
-
-        $username = isset($_POST['username'])?$_POST['username']:"";
-        $password = isset($_POST['password'])?$_POST['password']:"";
-        $email = isset($_POST['email'])?$_POST['email']:"";
-        $fullname = isset($_POST['fullname'])?$_POST['fullname']:"";
         
-        $account['username'] = $username;
-        $account['password'] = $password;
-        $account['email'] = $email;
-        $account['fullname'] = $fullname;
-        
-        
-        
-        
+        if ((!isset($_POST['username']) || $_POST['username']=="")) {
+            //Nếu người dùng không truyền thông tin đăng nhập lên như id và mật khẩu
+            $data = [
+                'view' => 'register',
+                'notification' => ''
+            ];
+            // var_dump('người dùng không gửi thông tin');
+        } else {
+            //Nếu người dùng có POST form đăng ký
+            $username = isset($_POST['username'])?$_POST['username']:"";
+            $password = isset($_POST['password'])?$_POST['password']:"";
+            $email = isset($_POST['email'])?$_POST['email']:"";
+            $fullname = isset($_POST['fullname'])?$_POST['fullname']:"";
+            
 
-        
-        
-        
-        
-        
+            $msgErr = '<div class="alert alert-warning" role="alert">Có lỗi xảy ra trong quá trình đăng ký tài khoản!</div>';
+            $sqlSuccess = false;
+            if ($username != "" && $password  != "" && $email != "" && $fullname != "" ) {
+                $model = new default_model();
+                $account['username'] = $username;
+                $account['password'] = $password;
+                $account['email'] = $email;
+                $account['fullname'] = $fullname;
+                $sqlSuccess = $model->insertNewAccount($account);
+            }
 
+            if ($sqlSuccess) {
+                //Cài đặt session để người dùng vừa đăng ký tự động đăng nhập
+                $_SESSION['user_info'] = $model->getUserInfo($username);    
 
-
-
-
-
-
-
-
-        if (!isset($_SESSION['user_info'])) {
-            //Nếu user chưa đăng nhập
-            if ((!isset($_POST['username']) || $_POST['username']=="")) {
-                //Nếu người dùng không truyền thông tin đăng nhập lên như id và mật khẩu
+                $data = [
+                    'view' => 'welcome',
+                    'title'=> 'Thành viên mới',
+                    'name' => $fullname,
+                    'adminPage' => 2         //Không phải admin = user bình thường
+                ];
+            } else {
                 $data = [
                     'view' => 'register',
-                    'notification' => ''
+                    'notification' => $msgErr
                 ];
-                // var_dump('người dùng không gửi thông tin');
-            } else {
-                // var_dump('người dùng gửi thông tin');
-                $model = new default_model();
-                $username = $_POST['username'];
-                $password = isset($_POST['password'])?$_POST['password']:"";
-                $isLoginCorrect = $model->checkLoginInfo($username, $password);
-                if ($isLoginCorrect) {
-                    //Nếu đăng nhập thành công --> cài đặt SESSION --> Chào mừng người dùng 
-                    $user_info = $model->getUserInfo($username);
-                    $_SESSION['user_info'] = $user_info;    
-                    // var_dump($user_info);
-                    $data = [
-                        'view' => 'welcome',
-                        'username' => $username,
-                        'name' => $user_info['hoten'],
-                        'title' => $user_info['chucvu'],
-                        'adminPage' => $user_info['adminPage']
-                    ];      
-                } else {
-                    //Nếu đăng nhập thất bại --> Trả về thông báo
-                    $data = [
-                        'view' => 'login',
-                        'notification' => '<div class="alert alert-warning" role="alert">Thông tin đăng nhập chưa chính xác!</div>',
-                        'username' => $username
-                    ];
-                };
             }
-        } else {
-            //Nếu người dùng đã đăng nhập
         }
 
+               
+        
+
+        
+        
+        
         return $data;
-
-
     }
-}
+} 
+        
+        
+    
+
+?>

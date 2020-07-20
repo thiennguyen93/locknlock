@@ -18,7 +18,9 @@ include_once('./view/layout/breadcrumb.php');
                                 <input class="form-control" placeholder="Họ tên" name="fullname" type="text" value="" required>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Email" name="email" type="email" value="" required>
+                                <input id="email" class="form-control" placeholder="Email" name="email" type="email" value="" required>
+                            </div>
+                            <div id="resultEmail">
                             </div>
                             <div class="form-group">
                                 <input id="username" class="form-control" placeholder="Tên đăng nhập" name="username" type="text" value="<?=@$data['username']?>" required>
@@ -46,7 +48,7 @@ include_once('./view/layout/breadcrumb.php');
 var password = document.getElementById("password");
 var confirm_password = document.getElementById("confirm_password");
 var username = document.getElementById("username");
-
+var email = document.getElementById("email");
 
 function checkUsernameAvailbility() {
     console.log('test','ajax.php?action=check&username=' + username.value);
@@ -54,7 +56,7 @@ function checkUsernameAvailbility() {
     var xhttp = new XMLHttpRequest() || ActiveXObject();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText==1) {
+            if (this.responseText>0) {
                 username.setCustomValidity("Tên đăng nhập này đã được sử dụng!");
                 document.getElementById('result').innerHTML = "<div class='alert alert-warning'><strong>Chú ý!</strong> Tên đăng nhập này đã được sử dụng!</div>";
             } else {
@@ -69,9 +71,34 @@ function checkUsernameAvailbility() {
     xhttp.send();
 }
 
+function checkEmailAvailbility() {
+    console.log('test','ajax.php?action=checkEmail&email=' + email.value);
+    // ajax.php?action=check&username=admin
+    var xhttp = new XMLHttpRequest() || ActiveXObject();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("result", this.responseText);
+            if (this.responseText>0) {
+                email.setCustomValidity("Email này đã được sử dụng!");
+                document.getElementById('resultEmail').innerHTML = "<div class='alert alert-warning'><strong>Chú ý!</strong> Email này đã được sử dụng!</div>";
+            } else {
+                email.setCustomValidity('');
+                document.getElementById('resultEmail').innerHTML = '';
+            }
+        }
+    }
+    //cau hinh request
+    xhttp.open('GET','ajax.php?action=checkEmail&email=' + email.value,true);
+    //gui request
+    xhttp.send();
+}
+
 
 username.onkeyup = checkUsernameAvailbility;
 username.onfocusout =  checkUsernameAvailbility;
+
+email.onkeyup = checkEmailAvailbility;
+email.onfocusout =  checkEmailAvailbility;
 
 function validatePassword(){
   if(password.value != confirm_password.value) {
