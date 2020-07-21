@@ -1,10 +1,20 @@
 <?php
 	session_start();
-	$curPage = 'index';
+	$curPage = 'categories';
 ?>
 
+<!-- TRANG SẢN PHẨM -->
 <?php
-	if (isset($_SESSION['user_info'])==false || $_SESSION['user_info']['adminPage'] != 1) {
+$controller = 'categories';
+include './lib/database.php';
+include 'router.php';
+var_dump($_SESSION['user_info']);
+?>
+
+
+
+<?php
+	if (!isset($_SESSION['user_info']) || $_SESSION['user_info']['adminPage'] != 1) {
 		header('Location: login.php');
 		exit();
 	}
@@ -38,9 +48,7 @@
 			<div class="main-panel">
 				<div class="content">
 					<!-- CONTENT -->
-					<?php
-					include_once("./view/dashboard.view.php")
-					?>
+					<?php include_once './view/' . $view; ?>
 					<!-- /CONTENT -->
 				</div>
 				<!-- FOOTER -->

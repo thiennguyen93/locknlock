@@ -35,16 +35,17 @@
 				</div>
 			</div>
 		</div>
+	
 		<ul class="nav">
-			<li class="nav-item active">
-				<a href="index.html">
+			<li class="nav-item <?php echo $curPage=='index'?'active':'' ?>">
+				<a href="index.php">
 					<i class="la la-dashboard"></i>
 					<p>Tổng quan</p>
 					<span class="badge badge-count">5</span>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a href="components.html">
+			<li class="nav-item <?php echo $curPage=='categories'?'active':'' ?>">
+				<a href="categories.php">
 					<i class="la la-table"></i>
 					<p>Danh mục</p>
 					<span class="badge badge-count">14</span>
@@ -60,28 +61,8 @@
 			<li class="nav-item">
 				<a href="tables.html">
 					<i class="la la-th"></i>
-					<p>Người dùng</p>
+					<p>Thành viên</p>
 					<span class="badge badge-count">6</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="notifications.html">
-					<i class="la la-bell"></i>
-					<p>Notifications</p>
-					<span class="badge badge-success">3</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="typography.html">
-					<i class="la la-font"></i>
-					<p>Typography</p>
-					<span class="badge badge-danger">25</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a href="icons.html">
-					<i class="la la-fonticons"></i>
-					<p>Icons</p>
 				</a>
 			</li>
 		</ul>
