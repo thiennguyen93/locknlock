@@ -8,6 +8,5 @@ $controllerObject = new controller();
 $data = $controllerObject->{ $action }();
 $view = $data['view'] . '.view.php';
 
-var_dump($view);
 
 ?>

@@ -23,13 +23,4 @@ class default_model {
         $this->db->execute($sql);
         return $this->db->getData();
     }
-
-
-
-
-
-
-
-
-
 }

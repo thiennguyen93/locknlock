@@ -1,5 +1,5 @@
 <?php
-// include './model/contact.model.php';
+// include './model/categories.model.php';
 class controller {
     public function default() {
         $data = [

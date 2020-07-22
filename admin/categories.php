@@ -8,7 +8,6 @@
 $controller = 'categories';
 include './lib/database.php';
 include 'router.php';
-var_dump($_SESSION['user_info']);
 ?>
 
 
