@@ -9,9 +9,9 @@ class default_model {
     public function getAllCategories() {
         $sql = <<<'EOT'
 SELECT *
-FROM CATEGORIES
+FROM CATEGORIES C
+WHERE C.status=1
 EOT;
-        var_dump($sql);
         $this->db->execute($sql);
         $result = $this->db->getAllData();
         return $result;

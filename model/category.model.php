@@ -8,7 +8,7 @@ class category {
     }
 
     public function getAllCategories() {
-        $sql = 'select * from categories';
+        $sql = 'select * from categories C where C.status=1';
         $this->db->execute($sql);
         return $this->db->getAllData();
     }
