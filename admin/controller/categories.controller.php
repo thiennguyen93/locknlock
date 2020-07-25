@@ -4,8 +4,6 @@ class controller {
     public function default() {
         $model = new default_model();
         $allCategories = $model->getAllCategories();
-
-
         $data = [
             'view' => 'categories',
             'allCategories' => $allCategories
