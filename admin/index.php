@@ -55,6 +55,10 @@
 <?php
 	include_once("./view/layout/modal.layout.php")
 ?>
+<?php
+	include_once("./view/layout/sub/endbody.sublayout.php")
+?>
+
 <!-- /MODAL -->
 </body>
 <?php

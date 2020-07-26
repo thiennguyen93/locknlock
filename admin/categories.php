@@ -63,6 +63,9 @@ include 'router.php';
 	include_once("./view/layout/modal.layout.php")
 ?>
 <!-- /MODAL -->
+<?php
+	include_once("./view/layout/sub/endbody.sublayout.php")
+?>
 </body>
 <?php
 	include_once("./view/layout/scripts.layout.php")
