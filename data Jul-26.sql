@@ -13,10 +13,12 @@
 
 
 -- Dumping database structure for locknlock
+DROP DATABASE IF EXISTS `locknlock`;
 CREATE DATABASE IF NOT EXISTS `locknlock` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `locknlock`;
 
 -- Dumping structure for table locknlock.categories
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id của danh mục',
   `name` varchar(50) DEFAULT NULL COMMENT 'tên danh mục',
@@ -24,80 +26,83 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `url_img` text COMMENT 'source ảnh danh mục',
   `parentId` int(11) DEFAULT NULL COMMENT 'id danh mục cha',
   `isFrontPage` char(50) DEFAULT 'N' COMMENT 'có hiện lên trang chủ hay không',
+  `status` int(1) DEFAULT '1' COMMENT '0: inactive, 1: active',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng sanh mục sản phẩm';
 
--- Dumping data for table locknlock.categories: ~64 rows (approximately)
+-- Dumping data for table locknlock.categories: ~65 rows (approximately)
 DELETE FROM `categories`;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` (`id`, `name`, `description`, `url_img`, `parentId`, `isFrontPage`) VALUES
-	(1, 'Hộp bảo quản', NULL, 'CA_food_storage.png', NULL, ' Y'),
-	(2, 'Dụng cụ nấu ăn', NULL, 'CA_cookware_2.png', NULL, 'Y'),
-	(3, 'Đồ dùng trên bàn', NULL, NULL, NULL, 'N'),
-	(4, 'Đồ dùng dã ngoại', NULL, 'CA_vacuum_flask.png', NULL, 'Y'),
-	(5, 'Bình giữ nhiệt/ Giữ lạnh', NULL, NULL, NULL, 'N'),
-	(6, 'Hàng gia dụng', NULL, 'CA_appliances_1.png', NULL, 'Y'),
-	(7, 'Phụ kiện nhà bếp', NULL, NULL, NULL, 'N'),
-	(8, 'Đồ dùng sinh hoạt', NULL, NULL, NULL, 'N'),
-	(9, 'Đồ dùng trẻ em', NULL, NULL, NULL, 'N'),
-	(10, 'Đồ Nội thất', NULL, NULL, NULL, 'N'),
-	(11, 'Hộp kín hơi', NULL, NULL, 1, 'N'),
-	(12, 'Hộp nhựa', NULL, NULL, 1, 'N'),
-	(13, 'Hủ gia vị', NULL, NULL, 1, 'N'),
-	(14, 'Nắp hộp kín hơi', NULL, NULL, 1, 'N'),
-	(15, 'Chảo/ Chảo sâu lòng', NULL, NULL, 2, 'N'),
-	(16, 'Nồi chảo/ Nồi áp suất', NULL, NULL, 2, 'N'),
-	(17, 'Dùng cho lò nướng', NULL, NULL, 2, 'N'),
-	(18, 'Dụng cụ trộn thực phẩm', NULL, NULL, 2, 'N'),
-	(19, 'Khay/ rổ', NULL, NULL, 2, 'N'),
-	(20, 'Dụng cụ nhà bếp/ Đồ gắp', NULL, NULL, 2, 'N'),
-	(21, 'Dao/ Kéo', NULL, NULL, 2, 'N'),
-	(22, 'Thớt', NULL, NULL, 2, 'N'),
-	(23, 'Bình nước', NULL, NULL, 3, 'N'),
-	(24, 'Ly/ Cốc', NULL, NULL, 3, 'N'),
-	(25, 'Đế nồi', NULL, NULL, 3, 'N'),
-	(26, 'Khay', NULL, NULL, 3, 'N'),
-	(27, 'Tấm lót bàn ăn', NULL, NULL, 3, 'N'),
-	(28, 'Ấm đun nước', NULL, NULL, 3, 'N'),
-	(29, 'Bình nước', NULL, 'CA_water_bottle.png', 4, 'Y'),
-	(30, 'Hộp cơm', NULL, 'CA_lunch_box.png', 4, 'Y'),
-	(31, 'Đồ dùng du lịch', NULL, NULL, 4, 'N'),
-	(32, 'Đồ dùng cắm trại', NULL, NULL, 4, 'N'),
-	(33, 'Hộp cơm giữ nhiệt', NULL, NULL, 5, 'N'),
-	(34, 'Hộp đựng cháo', NULL, NULL, 5, 'N'),
-	(35, 'Bình giữ nhiệt/ Giữ lạnh', NULL, NULL, 5, 'N'),
-	(36, 'Túi chườm đá', NULL, NULL, 5, 'N'),
-	(37, 'Thiết bị nhà bếp', NULL, NULL, 6, 'N'),
-	(38, 'Thiết bị gia dụng', NULL, NULL, 6, 'N'),
-	(39, 'Dụng cụ vệ sinh', NULL, NULL, 7, 'N'),
-	(40, 'Đồ rửa chén', NULL, NULL, 7, 'N'),
-	(41, 'Dụng cụ làm đá', NULL, NULL, 7, 'N'),
-	(42, 'Dụng cụ nấu ăn', NULL, NULL, 7, 'N'),
-	(43, 'Giá/ Kệ', NULL, NULL, 7, 'N'),
-	(44, 'Hàng dùng một lần', NULL, NULL, 7, 'N'),
-	(45, 'Dụng cụ bảo quản tủ lạnh', NULL, NULL, 7, 'N'),
-	(46, 'Dụng cụ nhà tắm', NULL, NULL, 8, 'N'),
-	(47, 'Thùng rác', NULL, NULL, 8, 'N'),
-	(48, 'Móc/ Kệ treo đồ', NULL, NULL, 8, 'N'),
-	(49, 'Chăn/ra/gối', NULL, NULL, 8, 'N'),
-	(50, 'Cây lau nhà', NULL, NULL, 8, 'N'),
-	(51, 'Dụng cụ uống sửa', NULL, NULL, 9, 'N'),
-	(52, 'Đồ dùng cho bé', NULL, NULL, 9, 'N'),
-	(53, 'Dụng cụ vệ sinh cho bé', NULL, NULL, 9, 'N'),
-	(54, 'Thảm cho bé', NULL, NULL, 9, 'N'),
-	(55, 'Bàn đa năng', NULL, NULL, 10, 'N'),
-	(56, 'Kệ treo/ Kệ sách', NULL, NULL, 10, 'N'),
-	(57, 'Bàn/ Tủ/ Ghế', NULL, NULL, 10, 'N'),
-	(58, 'Giường', NULL, NULL, 10, 'N'),
-	(59, 'Sofa/ Đồ dùng phòng khách', NULL, NULL, 10, 'N'),
-	(60, 'Thảm', NULL, NULL, 10, 'N'),
-	(61, 'Phụ kiện nội thất', NULL, NULL, 10, 'N'),
-	(62, 'Đèn', NULL, NULL, 10, 'N'),
-	(63, 'Tủ quần áo/ Tủ lắp ráp', NULL, NULL, 10, 'N'),
-	(64, 'Bàn trang điểm/ Gương', NULL, NULL, 10, 'N');
+INSERT INTO `categories` (`id`, `name`, `description`, `url_img`, `parentId`, `isFrontPage`, `status`) VALUES
+	(1, 'Hộp bảo quản', NULL, 'CA_food_storage.png', NULL, ' Y', 1),
+	(2, 'Dụng cụ nấu ăn', NULL, 'CA_cookware_2.png', NULL, 'Y', 1),
+	(3, 'Đồ dùng trên bàn', NULL, NULL, NULL, 'N', 0),
+	(4, 'Đồ dùng dã ngoại', NULL, 'CA_vacuum_flask.png', NULL, 'Y', 1),
+	(5, 'Bình giữ nhiệt/ Giữ lạnh', NULL, NULL, NULL, 'N', 0),
+	(6, 'Hàng gia dụng', NULL, 'CA_appliances_1.png', NULL, 'Y', 1),
+	(7, 'Phụ kiện nhà bếp', NULL, NULL, NULL, 'N', 1),
+	(8, 'Đồ dùng sinh hoạt', NULL, NULL, NULL, 'N', 1),
+	(9, 'Đồ dùng trẻ em', NULL, NULL, NULL, 'N', 1),
+	(10, 'Đồ Nội thất', NULL, NULL, NULL, 'N', 1),
+	(11, 'Hộp kín hơi', NULL, NULL, 1, 'N', 1),
+	(12, 'Hộp nhựa', NULL, NULL, 1, 'N', 1),
+	(13, 'Hủ gia vị', NULL, NULL, 1, 'N', 0),
+	(14, 'Nắp hộp kín hơi', NULL, NULL, 1, 'N', 0),
+	(15, 'Chảo/ Chảo sâu lòng', NULL, NULL, 2, 'N', 1),
+	(16, 'Nồi chảo/ Nồi áp suất', NULL, NULL, 2, 'N', 1),
+	(17, 'Dùng cho lò nướng', NULL, NULL, 2, 'N', 0),
+	(18, 'Dụng cụ trộn thực phẩm', NULL, NULL, 2, 'N', 0),
+	(19, 'Khay/ rổ', NULL, NULL, 2, 'N', 0),
+	(20, 'Dụng cụ nhà bếp/ Đồ gắp', NULL, NULL, 2, 'N', 0),
+	(21, 'Dao/ Kéo', NULL, NULL, 2, 'N', 1),
+	(22, 'Thớt', NULL, NULL, 2, 'N', 1),
+	(23, 'Bình nước', NULL, NULL, 3, 'N', 1),
+	(24, 'Ly/ Cốc', NULL, NULL, 3, 'N', 1),
+	(25, 'Đế nồi', NULL, NULL, 3, 'N', 0),
+	(26, 'Khay', NULL, NULL, 3, 'N', 0),
+	(27, 'Tấm lót bàn ăn', NULL, NULL, 3, 'N', 0),
+	(28, 'Ấm đun nước', NULL, NULL, 3, 'N', 0),
+	(29, 'Bình nước', NULL, 'CA_water_bottle.png', 4, 'Y', 1),
+	(30, 'Hộp cơm', NULL, 'CA_lunch_box.png', 4, 'Y', 1),
+	(31, 'Đồ dùng du lịch', NULL, NULL, 4, 'N', 0),
+	(32, 'Đồ dùng cắm trại', NULL, NULL, 4, 'N', 0),
+	(33, 'Hộp cơm giữ nhiệt', NULL, NULL, 5, 'N', 1),
+	(34, 'Hộp đựng cháo', NULL, NULL, 5, 'N', 1),
+	(35, 'Bình giữ nhiệt/ Giữ lạnh', NULL, NULL, 5, 'N', 0),
+	(36, 'Túi chườm đá', NULL, NULL, 5, 'N', 0),
+	(37, 'Thiết bị nhà bếp', NULL, NULL, 6, 'N', 0),
+	(38, 'Thiết bị gia dụng', NULL, NULL, 6, 'N', 0),
+	(39, 'Dụng cụ vệ sinh', NULL, NULL, 7, 'N', 1),
+	(40, 'Đồ rửa chén', NULL, NULL, 7, 'N', 0),
+	(41, 'Dụng cụ làm đá', NULL, NULL, 7, 'N', 0),
+	(42, 'Dụng cụ nấu ăn', NULL, NULL, 7, 'N', 0),
+	(43, 'Giá/ Kệ', NULL, NULL, 7, 'N', 0),
+	(44, 'Hàng dùng một lần', NULL, NULL, 7, 'N', 0),
+	(45, 'Dụng cụ bảo quản tủ lạnh', NULL, NULL, 7, 'N', 0),
+	(46, 'Dụng cụ nhà tắm', NULL, NULL, 8, 'N', 1),
+	(47, 'Thùng rác', NULL, NULL, 8, 'N', 1),
+	(48, 'Móc/ Kệ treo đồ', NULL, NULL, 8, 'N', 1),
+	(49, 'Chăn/ra/gối', NULL, NULL, 8, 'N', 0),
+	(50, 'Cây lau nhà', NULL, NULL, 8, 'N', 0),
+	(51, 'Dụng cụ uống sửa', NULL, NULL, 9, 'N', 1),
+	(52, 'Đồ dùng cho bé', NULL, NULL, 9, 'N', 1),
+	(53, 'Dụng cụ vệ sinh cho bé', NULL, NULL, 9, 'N', 0),
+	(54, 'Thảm cho bé', NULL, NULL, 9, 'N', 0),
+	(55, 'Bàn đa năng', NULL, NULL, 10, 'N', 1),
+	(56, 'Kệ treo/ Kệ sách', NULL, NULL, 10, 'N', 1),
+	(57, 'Bàn/ Tủ/ Ghế', NULL, NULL, 10, 'N', 0),
+	(58, 'Giường', NULL, NULL, 10, 'N', 0),
+	(59, 'Sofa/ Đồ dùng phòng khách', NULL, NULL, 10, 'N', 0),
+	(60, 'Thảm', NULL, NULL, 10, 'N', 0),
+	(61, 'Phụ kiện nội thất', NULL, NULL, 10, 'N', 0),
+	(62, 'Đèn', NULL, NULL, 10, 'N', 0),
+	(63, 'Tủ quần áo/ Tủ lắp ráp', NULL, NULL, 10, 'N', 0),
+	(64, 'Bàn trang điểm/ Gương', NULL, NULL, 10, 'N', 1),
+	(66, 'Test menu cấp 3', NULL, NULL, 11, 'N', 1);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.comments
+DROP TABLE IF EXISTS `comments`;
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL DEFAULT '0',
@@ -114,6 +119,7 @@ DELETE FROM `comments`;
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.contacts
+DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `email` varchar(50) DEFAULT NULL COMMENT 'email khách hàng',
@@ -129,6 +135,7 @@ DELETE FROM `contacts`;
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.posts
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id bài viết',
   `title` varchar(100) DEFAULT NULL COMMENT 'Tên bài viết',
@@ -149,6 +156,7 @@ INSERT INTO `posts` (`id`, `title`, `authorId`, `authorName`, `content`, `descri
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.products
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID sản phẩm',
   `name` varchar(200) DEFAULT NULL COMMENT 'Tên sản phẩm',
@@ -179,6 +187,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `postID`, `categor
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.role
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã vai trò',
   `name` varchar(50) NOT NULL DEFAULT '0' COMMENT 'Tên vai trò',
@@ -195,6 +204,7 @@ INSERT INTO `role` (`id`, `name`, `adminPage`) VALUES
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.specs
+DROP TABLE IF EXISTS `specs`;
 CREATE TABLE IF NOT EXISTS `specs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `productID` int(11) DEFAULT '0' COMMENT 'ID sản phẩm',
@@ -209,6 +219,7 @@ DELETE FROM `specs`;
 /*!40000 ALTER TABLE `specs` ENABLE KEYS */;
 
 -- Dumping structure for table locknlock.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID người dùng',
   `username` varchar(50) DEFAULT NULL COMMENT 'Tên đăng nhập',
