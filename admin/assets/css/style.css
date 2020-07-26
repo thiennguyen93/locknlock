@@ -1,0 +1,8 @@
+#image-holder {
+    height: 200px;
+    width: 200px;
+}
+.thumb-image {
+    height: 200px;
+    width: auto;
+}

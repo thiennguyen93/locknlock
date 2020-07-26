@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <h4 class="page-title">Quản lý danh mục</h4>
     <?php
-        // var_dump($data['allCategories']);
-       
+    // var_dump($data['allCategories']);
 
-        //Tạo ra danh sách các danh mục       
+
+    //Tạo ra danh sách các danh mục       
 
     ?>
     <div class="card">
@@ -15,24 +15,33 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th scope="col"  style="width:2%">STT</th>
                         <th scope="col">Tên danh mục</th>
-                        <th scope="col">Mô tả</th>
-                        <th scope="col">Thao tác</th>
+                        <th scope="col" class="text-center">Hiển thị ở Trang chủ</th>
+                        <th scope="col" class="text-center" style="width:150px">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data['allCategories'] as $key => $value) { ?>
-                    <tr>
-                        <td>
-                        <?=str_repeat('─', $value['dept']); ?>
-                        <?=' ' . $value['dept']==0?'<strong>'.$value['name'].'</strong>':$value['name']?>
-                        </td>
-                        <td><?=$value['description']?></td>
-                        <td>
-                        <a href='?action=edit&id=<?=$value['id']?>' class="btn btn-success text-white btn-sm"><i class="la la-edit"></i> Thay đổi</a>
-                        <a href='?action=delete&id=<?=$value['id']?>' class="btn btn-danger text-white btn-sm"><i class="la la-trash"></i> Xóa</a>
-                        </td>
-                    </tr>
+                    <?php $stt=0; foreach ($data['allCategories'] as $key => $value) { $stt++?>
+                        <tr>
+                            <td>
+                                <?=$stt?>
+                            </td>
+                            <td>
+                                <?= str_repeat('─', $value['dept']); ?>
+                                <?= ' ' . $value['dept'] == 0 ? '<strong>' . $value['name'] . '</strong>' : $value['name'] ?>
+                            </td>
+                            <td class="text-center">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="" <?=$value['isFrontPage'] == 'Y'?'checked':''?>>
+                                    <span class="form-check-sign"></span>
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <a href='?action=edit&id=<?= $value['id'] ?>' class="btn btn-success text-white btn-sm"><i class="la la-edit"></i></a>
+                                <a href='?action=delete&id=<?= $value['id'] ?>' class="btn btn-danger text-white btn-sm"><i class="la la-trash"></i></a>
+                            </td>
+                        </tr>
                     <?php
                     }
                     ?>
