@@ -51,8 +51,8 @@
 					<span class="badge badge-count"><?=$data['global']['numberOfCategories']?></span>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a href="forms.html">
+			<li class="nav-item <?php echo $curPage=='products'?'active':'' ?>">
+				<a href="products.php">
 					<i class="la la-keyboard-o"></i>
 					<p>Sản phẩm</p>
 					<span class="badge badge-count">50</span>
