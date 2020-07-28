@@ -4,6 +4,13 @@
 ?>
 
 <?php
+$controller = 'categories';
+include_once './lib/database.php';
+include_once 'router.php';
+?>
+
+
+<?php
 	if (isset($_SESSION['user_info'])==false || $_SESSION['user_info']['adminPage'] != 1) {
 		header('Location: login.php');
 		exit();

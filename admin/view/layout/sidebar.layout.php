@@ -48,7 +48,7 @@
 				<a href="categories.php">
 					<i class="la la-table"></i>
 					<p>Danh mục</p>
-					<span class="badge badge-count">14</span>
+					<span class="badge badge-count"><?=$data['global']['numberOfCategories']?></span>
 				</a>
 			</li>
 			<li class="nav-item">
