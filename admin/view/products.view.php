@@ -66,6 +66,7 @@
             <?php } ?>
         </div>
         <div class="card-footer">
+        <?php if ($data['totalPages'] >2) { ?>
             <ul class="pagination pg-primary">
                 <!-- <?php if ($data['page'] > 1) { //Nếu trang hiện tại là trang đầu tiên thì ẩn Prev đi
                         ?>
@@ -96,6 +97,7 @@
                 </li>
                 <?php } ?> -->
             </ul>
+        <?php } ?>
         </div>
     </div>
 </div>
