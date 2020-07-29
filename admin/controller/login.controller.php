@@ -23,7 +23,6 @@ class controller
                 if ($isLoginCorrect) {
                     //Nếu đăng nhập thành công --> cài đặt SESSION --> Chào mừng người dùng 
                     $user_info = $model->getUserInfo($username);
-                    var_dump($user_info);
                     $_SESSION['user_info'] = $user_info;    
                     // var_dump($user_info);
                     $data = [
@@ -38,6 +37,7 @@ class controller
                     //Nếu đăng nhập thất bại --> Trả về thông báo
                     $data = [
                         'view' => 'login',
+                        'username' =>$username,
                         'notification' => '<div class="alert alert-warning" role="alert">Thông tin đăng nhập chưa chính xác!</div>',
                         'username' => $username
                     ];

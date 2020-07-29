@@ -1,5 +1,5 @@
 <?php 
-class default_model {
+class category_model {
     private $db;
     function __construct()
     {

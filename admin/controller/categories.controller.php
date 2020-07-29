@@ -2,7 +2,7 @@
 include './model/categories.model.php';
 class controller {
     public function default() {
-        $model = new default_model();
+        $model = new category_model();
         $allCategories = $model->getAllCategories();
         $data = [
             'view' => 'categories',
@@ -13,7 +13,7 @@ class controller {
 
     public function edit() {
         //Tương ứng với action=edit
-        $model = new default_model();
+        $model = new category_model();
         $category = $model->getCategory($_GET['id']);
         $allCategories = $model->getAllCategories();
         //Nếu không tìm thấy danh mục

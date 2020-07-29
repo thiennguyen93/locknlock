@@ -57,7 +57,7 @@ include_once 'router.php';
 				<form class="login100-form validate-form" method="post">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Nhập tên đăng nhập">
+						<input value="<?=@$data['username']?>" class="input100" type="text" name="username" placeholder="Nhập tên đăng nhập">
 						<span class="focus-input100"></span>
 					</div>
 

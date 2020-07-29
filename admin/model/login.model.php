@@ -11,7 +11,6 @@ class default_model {
         $password = addslashes($password);
 
         $sql = 'SELECT COUNT(A.id) AS ketqua FROM users A LEFT JOIN role B ON A.roleId=B.id WHERE A.username = \''.$username.'\' AND A.password=\''.$password.'\' AND B.adminPage=1 LIMIT 1';
-        var_dump($sql);
         $this->db->execute($sql);
         $result = $this->db->getData();
         return (int) $result['ketqua'];
