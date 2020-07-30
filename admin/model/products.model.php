@@ -7,7 +7,7 @@ class default_model {
     }
 
     public function getProducts($page=1, $categoryId = '',$productName='',$itemsPerPage=3) {
-        $offset = $page - 1;    //Lấy từ sau dòng       
+        $offset = ($page - 1)*$itemsPerPage;    //Lấy từ sau dòng       
         $whereClause = ' WHERE '. (!empty($categoryId)?'P.categoryId='.(int)$categoryId:'1=1');
         $whereClause .= ' AND '. ($productName!=''?'P.name LIKE \'%'.$productName.'%\'':'2=2');
         $sql = 'SELECT P.id, P.name, p.price, c.name as catName, p.description, p.thumbnail_url, p.categoryId FROM PRODUCTS P INNER JOIN CATEGORIES C ON P.categoryID = C.id' . $whereClause;
@@ -16,6 +16,7 @@ class default_model {
         $result = $this->db->getAllData();  //Lấy sản phẩm thoả điều kiện
         //Lấy tổng số sản phẩm
         $sql_count = 'SELECT count(P.id) as ketqua FROM PRODUCTS P INNER JOIN CATEGORIES C ON P.categoryID = C.id' . $whereClause;
+        
         $this->db->execute($sql_count);
         $totalProducts = $this->db->getData();
         $totalProducts = $totalProducts['ketqua'];
@@ -26,6 +27,7 @@ class default_model {
             'totalPages' => $totalPages,
             'page' => $page
         ];
+        
         return $data;
     }  
 

@@ -11,6 +11,7 @@ class controller {
         $model = new default_model();
         $page = (int)(isset($_GET['page'])?($_GET['page']>0?$_GET['page']:1):1);
         $itemsPerPage = (int)(isset($_GET['itemsPerPage'])?($_GET['itemsPerPage']>0?$_GET['itemsPerPage']:3):3);
+        $itemsPerPage = $itemsPerPage > 10?10:$itemsPerPage;
         $filterProductName = isset($_GET['keyword'])?$_GET['keyword']:'';
         $filterCategoryId = isset($_GET['categoryId'])?$_GET['categoryId']:'';
 

@@ -28,6 +28,7 @@
                             <select class="form-control input-square" id="squareSelect" name='itemsPerPage'>
                                 <?php 
                                     $defaultItemsPerPage = isset($_GET['itemsPerPage'])?$_GET['itemsPerPage']:3;
+                                    $defaultItemsPerPage = $defaultItemsPerPage > 10?10:$defaultItemsPerPage;
                                 for ($j=1;$j<=10;$j++) { ?>
                                     <option value='<?=$j?>' <?=@($j==$defaultItemsPerPage?'selected':'')?>>
                                         <?=$j?> sản phẩm
@@ -81,7 +82,7 @@
                 <p class="text-danger">Không tìm thấy sản phẩm nào...</p>
             <?php } ?>
         </div>
-        <?php if ($data['totalPages'] >2) { ?>
+        <?php if ($data['totalPages'] >1) { ?>
         <div class="card-footer">
             <ul class="pagination pg-primary">
                 <li class="page-item">
@@ -94,10 +95,9 @@
                 <?php
                 $pageNeigbor = 1;
                 $start = ($data['page'] - $pageNeigbor) <= 1? 1:($data['page'] - $pageNeigbor);
-                $start = ($data['page'] == $data['totalPages'])?($data['totalPages']-$pageNeigbor*2):$start;
+                $start = ($data['page'] == $data['totalPages'])?($data['totalPages']-$pageNeigbor):$start;
                 $end = ($data['page'] > 1 && $data['page'] < $data['totalPages'])? ($data['page'] + $pageNeigbor):($pageNeigbor*2+1);
                 $end = ($data['page'] >= $data['totalPages'])? $data['totalPages']:$end;
-
                 for ($k=$start; $k <= $end ; $k++) {
                 ?>
                     <?php if ($k>=1 and $k <= $data['totalPages']) { ?>
