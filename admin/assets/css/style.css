@@ -1,8 +1,18 @@
 #image-holder {
     height: 200px;
-    width: 200px;
+    width: 100%;
 }
 .thumb-image {
+    height: auto;
+    width: 100%;
+}
+
+#image-holder {
     height: 200px;
+    width: 100%;
+}
+
+.thumb-image-mini {
+    height: 70px;
     width: auto;
 }

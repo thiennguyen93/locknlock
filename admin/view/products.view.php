@@ -23,6 +23,18 @@
                                 <?php } ?>
                             </select>
                         </div>
+                        <label for="inlineinput" class="col-form-label">Hiển thị mỗi trang</label>
+                        <div class="pl-2 pr-3">
+                            <select class="form-control input-square" id="squareSelect" name='itemsPerPage'>
+                                <?php 
+                                    $defaultItemsPerPage = isset($_GET['itemsPerPage'])?$_GET['itemsPerPage']:3;
+                                for ($j=1;$j<=10;$j++) { ?>
+                                    <option value='<?=$j?>' <?=@($j==$defaultItemsPerPage?'selected':'')?>>
+                                        <?=$j?> sản phẩm
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
                         <div class="pl-2">
                             <button type="submit" class="btn btn-success">Lọc</button>
                         </div>
@@ -39,7 +51,7 @@
                             <th style="width: 15%">Mô tả</th>
                             <th style="width: 10%">Giá</th>
                             <th style="width: 15%">Danh mục</th>
-                            <th>Hình ảnh</th>
+                            <th style="width: 5%">Hình ảnh</th>
                             <th class='text-center' style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
@@ -51,7 +63,11 @@
                                 <td><?= $data['productList'][$i]['description'] ?></td>
                                 <td><?= number_format($data['productList'][$i]['price']) ?> đ</td>
                                 <td><?= $data['productList'][$i]['catName'] ?></td>
-                                <td><?= $data['productList'][$i]['thumbnail_url'] ?></td>
+                                <td>
+                                    <div class="my-3" id="image-holder-mini">
+                                        <img class="thumb-image-mini" src="../img/products/<?= $data['productList'][$i]['thumbnail_url'] ?>" alt="" srcset="">
+                                    </div>
+                                </td>
                                 <td class="text-center">
                                     <a href='?action=edit&id=<?= $data['productList'][$i]['id'] ?>' class="btn btn-success text-white btn-sm"><i class="la la-edit"></i></a>
                                     <a href='?action=delete&id=<?= $data['productList'][$i]['id'] ?>' class="btn btn-danger text-white btn-sm"><i class="la la-trash"></i></a>
@@ -65,39 +81,44 @@
                 <p class="text-danger">Không tìm thấy sản phẩm nào...</p>
             <?php } ?>
         </div>
-        <div class="card-footer">
         <?php if ($data['totalPages'] >2) { ?>
+        <div class="card-footer">
             <ul class="pagination pg-primary">
-                <!-- <?php if ($data['page'] > 1) { //Nếu trang hiện tại là trang đầu tiên thì ẩn Prev đi
-                        ?>
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                    <a class="page-link" href="<?=$data['page']<=1?'#':'?page='.($data['page']-1).$data['link']?>" aria-label="Previous">
                         <span aria-hidden="true">«</span>
                         <span class="sr-only">Trang trước</span>
                     </a>
                 </li>
-                <?php } ?> -->
 
                 <?php
-                for ($k = 1; $k < $data['totalPages']; $k++) {
+                $pageNeigbor = 1;
+                $start = ($data['page'] - $pageNeigbor) <= 1? 1:($data['page'] - $pageNeigbor);
+                $start = ($data['page'] == $data['totalPages'])?($data['totalPages']-$pageNeigbor*2):$start;
+                $end = ($data['page'] > 1 && $data['page'] < $data['totalPages'])? ($data['page'] + $pageNeigbor):($pageNeigbor*2+1);
+                $end = ($data['page'] >= $data['totalPages'])? $data['totalPages']:$end;
+
+                for ($k=$start; $k <= $end ; $k++) {
                 ?>
+                    <?php if ($k>=1 and $k <= $data['totalPages']) { ?>
                     <li class="page-item <?= $data['page'] == $k ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $k ?><?=$data['link']?>"><?= $k ?></a></li>
+                    <?php } ?>
                 <?php } ?>
 
                 <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li> -->
 
-                <!-- <?php if ($data['page'] >= $data['totalPages']) { ?>
+                <?php if ($data['page'] < $data['totalPages']) { ?>
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                    <a class="page-link" href="?page=<?= $data['page']+1 ?><?=$data['link']?>" aria-label="Next">
                         <span aria-hidden="true">»</span>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">Tiếp theo</span>
                     </a>
                 </li>
-                <?php } ?> -->
+                <?php } ?>
             </ul>
-        <?php } ?>
         </div>
+        <?php } ?>
     </div>
 </div>

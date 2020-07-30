@@ -55,7 +55,7 @@
 				<a href="products.php">
 					<i class="la la-keyboard-o"></i>
 					<p>Sản phẩm</p>
-					<span class="badge badge-count">50</span>
+					<span class="badge badge-count"><?=$data['global']['numberOfProducts']?></span>
 				</a>
 			</li>
 			<li class="nav-item">

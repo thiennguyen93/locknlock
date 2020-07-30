@@ -12,6 +12,13 @@ class global_default_model {
         $result = $this->db->getData();
         return $result['ketqua'];
     }
+    // getNumberOfProducts
+    public function getNumberOfProducts() {
+        $sql = 'SELECT COUNT(id) as ketqua FROM PRODUCTS P';
+        $this->db->execute($sql);
+        $result = $this->db->getData();
+        return $result['ketqua'];
+    }  
 
 }
 ?>
