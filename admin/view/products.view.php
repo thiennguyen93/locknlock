@@ -42,6 +42,17 @@
                     </div>
                 </form>
             </div>
+            <div class="notification">
+                <?php $notification = isset($_GET['notification'])?$_GET['notification']:''; 
+                        $notificationContent = isset($_SESSION['notification'])?$_SESSION['notification']:'';
+                    if ($notification == 'show') {
+                        echo $notificationContent;
+                    } 
+                    unset($notificationContent);
+                    unset($_SESSION['notification']);
+                ?>
+                
+            </div>
             <?php if (count($data['productList'])>0) { ?>
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -70,7 +81,7 @@
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <a href='?action=edit&id=<?= $data['productList'][$i]['id'] ?>' class="btn btn-success text-white btn-sm"><i class="la la-edit"></i></a>
+                                    <a href='?action=edit&id=<?= $data['productList'][$i]['id'] ?>&return=<?=urlencode('&page='.$data['page'].$data['link'])?>' class="btn btn-success text-white btn-sm"><i class="la la-edit"></i></a>
                                     <a href='?action=delete&id=<?= $data['productList'][$i]['id'] ?>' class="btn btn-danger text-white btn-sm"><i class="la la-trash"></i></a>
                                 </td>
                             </tr>

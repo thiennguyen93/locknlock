@@ -45,6 +45,11 @@
             return $data;
         }
 
+        public function getInsertId() {
+            $this->result = $this->connection->insert_id;
+            return $this->result;
+        }
+
         //lấy toàn bộ dữ liệu
         public function getAllData(){
             $data = [];

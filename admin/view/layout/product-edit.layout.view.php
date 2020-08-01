@@ -22,6 +22,8 @@
             <div class="col-md-10 col-sm-12">
                 <div class="row">
                         <div class="col-md-6 col-sm-12">
+                            <input type="hidden" name="id" value=<?=$data['product']['id'] ?>>
+                            <input type="hidden" name="return" value=<?=$data['return']?>>
                             <div class="form-group">
                                 <label for="squareInput">Tên sản phẩm</label>
                                 <input name='name' value='<?= $data['product']['name'] ?>' type="text" class="form-control input-square" id="squareInput" placeholder="Nhập tên sản phẩm" required>
@@ -44,8 +46,8 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
-                                <label name='description' for="squareInput">Mô tả sản phẩm</label>
-                                <input value='<?= $data['product']['description'] ?>' type="text" class="form-control input-square" id="squareInput" placeholder="Nhập mô tả sản phẩm (màu sắc, trọng lượng, phụ kiện kèm theo)" required>
+                                <label for="squareInput">Mô tả sản phẩm</label>
+                                <input name='description' value='<?= $data['product']['description'] ?>' type="text" class="form-control input-square" id="squareInput" placeholder="Nhập mô tả sản phẩm (màu sắc, trọng lượng, phụ kiện kèm theo)">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
