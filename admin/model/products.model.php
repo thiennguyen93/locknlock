@@ -43,6 +43,27 @@ class default_model {
         return $result;
     }
 
+    public function checkProductExitsById($id) {
+        $sql = 'SELECT * FROM PRODUCTS P WHERE P.id = '.$id;
+        $sql .= ' LIMIT 1';
+        $this->db->execute($sql);
+        $result = $this->db->getData();  //Lấy sản phẩm thoả điều kiện
+        if ($result==0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function saveProduct($id, $data) {
+        if (checkProductExitsById($id)) {
+            //Nếu sản phẩm tồn tại UPDATE
+            // $sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
+        } else {
+
+        }
+
+    }
+
     public function getProductById ($id) {
         $data = null;
         $whereClause = ' WHERE p.id ='.$id;

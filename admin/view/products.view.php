@@ -47,7 +47,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="width: 5%">STT</th>
+                            <th class='text-center' style="width: 5%">STT</th>
                             <th style="width: 30%">Tên sản phẩm</th>
                             <th style="width: 15%">Mô tả</th>
                             <th style="width: 10%">Giá</th>

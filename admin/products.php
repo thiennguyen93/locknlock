@@ -5,6 +5,9 @@
 
 <!-- TRANG SẢN PHẨM -->
 <?php
+
+
+
 $controller = 'products';
 include './lib/database.php';
 include 'router.php';

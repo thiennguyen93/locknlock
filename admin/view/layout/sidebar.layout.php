@@ -61,7 +61,7 @@
 			<li class="nav-item">
 				<a href="tables.html">
 					<i class="la la-th"></i>
-					<p>Thành viên</p>
+					<p>Bài viết</p>
 					<span class="badge badge-count">6</span>
 				</a>
 			</li>
