@@ -58,8 +58,8 @@
 					<span class="badge badge-count"><?=$data['global']['numberOfProducts']?></span>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a href="tables.html">
+			<li class="nav-item <?php echo $curPage=='posts'?'active':'' ?>">
+				<a href="posts.php">
 					<i class="la la-th"></i>
 					<p>Bài viết</p>
 					<span class="badge badge-count">6</span>

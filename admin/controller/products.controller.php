@@ -125,7 +125,6 @@ class controller {
     
             $result = $model->saveProduct($product);
             $_SESSION['notification'] = '<p class="text-success">Đã cập nhật thông tin cho sản phẩm <strong>'.$product['name'].'</strong></p>';
-            var_dump($_FILES['photo']);
             header('location: ?'.$product['return'].'&notification=show');
             exit();
 
@@ -137,8 +136,25 @@ class controller {
             ];
     
             return $data;
-    
+    }
 
+    public function delete() {
+        $id =  isset($_GET['id'])?(int)$_GET['id']:null;
+        $return = isset($_GET['return'])?$_GET['return']:'';
+        $model = new default_model();
+        $sqlresult = $model->deleteProductById($id);
+        if ($sqlresult == false) {
+            $data = [
+                'view' => 'error',
+                'errDetail' => 'Xóa sản phẩm thất bại',
+                'errReturnLink' => 'products.php'
+            ];
+        } else {
+            $_SESSION['notification'] = '<p class="text-success">Đã xóa sản phẩm thành công</strong></p>';
+            header('Location: products.php?'.$return.'&notification=show');
+        }
+
+        return $data;    
     }
 
 }

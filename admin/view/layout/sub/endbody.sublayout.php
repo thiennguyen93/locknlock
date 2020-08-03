@@ -71,3 +71,4 @@ if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
 		});
 	};
 </script>
+

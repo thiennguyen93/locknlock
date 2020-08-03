@@ -1,24 +1,24 @@
 <div class="container-fluid">
-    <h4 class="page-title">Quản lý sản phẩm</h4>
+    <h4 class="page-title">Quản lý bài viết</h4>
     <div class="card">
         <div class="card-header">
-            <div class="card-title">Các mặt hàng đang kinh doanh <a href="products.php?action=add" class="btn btn-primary btn-border btn-round float-right btn-sm"><i class="la la-plus"></i> Thêm sản phẩm</a></div>
+            <div class="card-title">Các bài viết <a href="posts.php?action=add" class="btn btn-primary btn-border btn-round float-right btn-sm"><i class="la la-plus"></i> Thêm bài viết</a></div>
         </div>
         <div class="card-body">
             <div class="card-sub">
                 <form action="" method="get">
                     <div class="form-group form-inline">
-                        <label for="inlineinput" class="col-form-label">Tìm tên sản phẩm</label>
+                        <label for="inlineinput" class="col-form-label">Tiêu đề bài viết</label>
                         <div class="pl-2 pr-3">
-                            <input value='<?=@$_GET['keyword']?>' name='keyword' type="text" class="form-control input-full" id="inlineinput" placeholder="--Nhập tên sản phẩm--">
+                            <input value='<?=@$_GET['keyword']?>' name='keyword' type="text" class="form-control input-full" id="inlineinput" placeholder="--Nhập tiêu đề bài viết--">
                         </div>
-                        <label for="inlineinput" class="col-form-label">Lọc theo danh mục</label>
+                        <label for="inlineinput" class="col-form-label">Tác giả</label>
                         <div class="pl-2 pr-3">
-                            <select class="form-control input-square" id="squareSelect" name='categoryId'>
+                            <select class="form-control input-square" id="squareSelect" name='authorId'>
                                 <option value=''>(Không chọn)</option>
-                                <?php foreach ($data['categoryList'] as $value) { ?>
-                                    <option value='<?= $value['id'] ?>' <?=@($value['id']==$_GET['categoryId']?'selected':'')?>>
-                                        <?= str_repeat('─', $value['dept']) . str_repeat(' ', $value['dept']); ?><?= $value['name'] ?>
+                                <?php foreach ($data['authorList'] as $value) { ?>
+                                    <option value='<?= $value['id'] ?>' <?=@($value['id']==$_GET['authorId']?'selected':'')?>>
+                                        <?= $value['hoten']?>
                                     </option>
                                 <?php } ?>
                             </select>
@@ -31,14 +31,14 @@
                                     $defaultItemsPerPage = $defaultItemsPerPage > 10?10:$defaultItemsPerPage;
                                 for ($j=1;$j<=10;$j++) { ?>
                                     <option value='<?=$j?>' <?=@($j==$defaultItemsPerPage?'selected':'')?>>
-                                        <?=$j?> sản phẩm
+                                        <?=$j?> bài viết
                                     </option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="pl-2">
                             <button type="submit" class="btn btn-success">Lọc</button>
-                            <a href="products.php" class="btn btn-danger">Xóa bộ lọc</a>
+                            <a href="posts.php" class="btn btn-danger">Xóa bộ lọc</a>
                         </div>
                     </div>
                 </form>
@@ -54,36 +54,28 @@
                 ?>
                 
             </div>
-            <?php if (count($data['productList'])>0) { ?>
+            <?php if (count($data['postList'])>0) { ?>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th class='text-center' style="width: 5%">STT</th>
-                            <th style="width: 30%">Tên sản phẩm</th>
-                            <th style="width: 15%">Mô tả</th>
-                            <th style="width: 10%">Giá</th>
-                            <th style="width: 15%">Danh mục</th>
-                            <th style="width: 5%">Hình ảnh</th>
+                            <th style="width: 30%">Tiêu đề</th>
+                            <th style="width: 15%">Tác giả</th>
+                            <th style="width: 10%">Ghi chú</th>
                             <th class='text-center' style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 0; $i < count($data['productList']); $i++) { ?>
+                        <?php for ($i = 0; $i < count($data['postList']); $i++) { ?>
                             <tr>
                                 <th scope="row" class='text-center'><?= 1 + $i + $data['itemPerPage'] * ($data['page'] - 1) ?></th>
-                                <td><?= $data['productList'][$i]['name'] ?></td>
-                                <td><?= $data['productList'][$i]['description'] ?></td>
-                                <td><?= number_format($data['productList'][$i]['price']) ?> đ</td>
-                                <td><?= $data['productList'][$i]['catName'] ?></td>
-                                <td>
-                                    <div class="my-3" id="image-holder-mini">
-                                        <img class="thumb-image-mini" src="../img/products/<?= $data['productList'][$i]['thumbnail_url'] ?>" alt="" srcset="">
-                                    </div>
-                                </td>
+                                <td><?= $data['postList'][$i]['title']?></td>
+                                <td><?= $data['postList'][$i]['authorName'] ?></td>
+                                <td><?= $data['postList'][$i]['description'] ?></td>
                                 <td class="text-center">
-                                    <a href='?action=edit&id=<?= $data['productList'][$i]['id'] ?>&return=<?=urlencode('&page='.$data['page'].$data['link'])?>' class="btn btn-success text-white btn-sm"><i class="la la-edit"></i></a>
-                                    <button data-return='<?=urlencode('&page='.$data['page'].$data['link'])?>' data-action='delete_product' data-item="<?=base64_encode(json_encode($data['productList'][$i]))?>" type="button" data-toggle="modal" data-target="#modalUpdate" data-whatever="product" href='?action=delete&id=<?= $data['productList'][$i]['id'] ?>' class="btn btn-danger text-white btn-sm"><i class="la la-trash"></i></button>
+                                    <a href='?action=edit&id=<?= $data['postList'][$i]['id'] ?>&return=<?=urlencode('&page='.$data['page'].$data['link'])?>' class="btn btn-success text-white btn-sm"><i class="la la-edit"></i></a>
+                                    <button data-return='<?=urlencode('&page='.$data['page'].$data['link'])?>' data-action='delete_post' data-item="<?=base64_encode(json_encode($data['postList'][$i]))?>" type="button" data-toggle="modal" data-target="#modalUpdate" data-whatever="post" href='?action=delete&id=<?= $data['postList'][$i]['id'] ?>' class="btn btn-danger text-white btn-sm"><i class="la la-trash"></i></button>
                                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button> -->
                                 </td>
                             </tr>

@@ -32,6 +32,7 @@
         //thực thi câu lệnh
         public function execute($sql){
             $this->result = $this->connection->query($sql);
+            if ($this->connection->error) return false;
             return $this->result;
         }
 

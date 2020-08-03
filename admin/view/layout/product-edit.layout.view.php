@@ -23,7 +23,7 @@
                 <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <input type="hidden" name="id" value=<?=$data['product']['id'] ?>>
-                            <input type="hidden" name="return" value=<?=$data['return']?>>
+                            <input type="hidden" name="return" value=<?=isset($data['return'])?$data['return']:''?>>
                             <div class="form-group">
                                 <label for="squareInput">Tên sản phẩm</label>
                                 <input name='name' value='<?= $data['product']['name'] ?>' type="text" class="form-control input-square" id="squareInput" placeholder="Nhập tên sản phẩm" required>
@@ -69,7 +69,7 @@
         </div>
                     <div class="card-action d-flex justify-content-end">
                         <button type="submit" class="btn btn-success mx-1"><i class="la la-save"></i> Lưu</button>
-                        <a href='products.php' class="btn btn-danger mx-1"><i class="la la-times"></i> Huỷ</a>
+                        <a href='products.php<?=isset($data['return'])?('?'.$data['return']):''?>' class="btn btn-danger mx-1"><i class="la la-times"></i> Huỷ</a>
                     </div>
             
                

@@ -15,7 +15,14 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'default'; //Mặc định 
 include_once './controller/'.$controller.'.controller.php';
 $controllerObject = new controller();
 
-$data = $controllerObject->{ $action }();
+try {
+    $data = $controllerObject->{ $action }();
+} catch (Throwable $e) {
+    $data['view'] = 'error';
+    $data['errDetail'] = $e;
+    $data['errReturnLink'] = 'index.php';
+}
+
 
 
 $view = $data['view'] . '.view.php';

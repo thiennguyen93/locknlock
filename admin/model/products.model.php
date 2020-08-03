@@ -11,12 +11,13 @@ class default_model {
         $whereClause = ' WHERE '. (!empty($categoryId)?'P.categoryId='.(int)$categoryId:'1=1');
         $whereClause .= ' AND '. (!empty($productId)?'P.id='.(int)$productId:'2=2');
         $whereClause .= ' AND '. ($productName!=''?'P.name LIKE \'%'.$productName.'%\'':'3=3');
-        $sql = 'SELECT P.id, P.name, p.price, c.name as catName, p.description, p.thumbnail_url, p.categoryId FROM PRODUCTS P INNER JOIN CATEGORIES C ON P.categoryID = C.id' . $whereClause;
-        $sql .= ' LIMIT '.$offset.','.$itemsPerPage;
+        $sql = 'SELECT P.id, P.name, p.price, c.name as catName, p.description, p.thumbnail_url, p.categoryId, p.created FROM PRODUCTS P INNER JOIN CATEGORIES C ON P.categoryID = C.id' . $whereClause;
+        $sql .= ' ORDER BY P.created DESC LIMIT '.$offset.','.$itemsPerPage;
         $this->db->execute($sql);
         $result = $this->db->getAllData();  //Lấy sản phẩm thoả điều kiện
         //Lấy tổng số sản phẩm
         $sql_count = 'SELECT count(P.id) as ketqua FROM PRODUCTS P INNER JOIN CATEGORIES C ON P.categoryID = C.id' . $whereClause;
+        
         
         $this->db->execute($sql_count);
         $totalProducts = $this->db->getData();
@@ -55,14 +56,14 @@ class default_model {
         return true;
     }
 
-    public function savePostByProductId($productId, $postContent) {
-        $sql = 'SELECT b.id FROM PRODUCTS A INNER JOIN POSTS B ON A.postId = B.id WHERE A.id=' .$productId ;
+    public function savePostByProductId($productId, $postContent, $postTitle='Bài viết chưa đặt tên') {
+        $sql = 'SELECT b.id, a.name FROM PRODUCTS A INNER JOIN POSTS B ON A.postId = B.id WHERE A.id=' .$productId ;
         $sql .= ' LIMIT 1';
         $this->db->execute($sql);
         $ret  = $this->db->getData();
         $authorName = $_SESSION['user_info']['hoten'];
         $authorId = $_SESSION['user_info']['id'];
-        $title = 'Bài viết giới thiệu sản phẩm';
+        $title =  $postTitle;
         $lastId = null;
         if ($ret) {
             //Nếu sản phẩm có bài viết
@@ -126,16 +127,32 @@ class default_model {
         }
 
         
-        if ($this->checkProductExitsById($productData['id'])) {
-            //Nếu sản phẩm tồn tại UPDATE
+        
+
+        // var_dump($this->checkProductExitsById($productData['id']));
+        // exit();
+        
+        
+        if ($this->checkProductExitsById($productData['id'])==false) {
+           
+            //Nếu sản phẩm chưa tồn tại
+            $sql = 'INSERT INTO PRODUCTS (name) VALUES (\''.$productData['name'].'\')';
+            $this->db->execute($sql);
+            $productData['id']= $this->db->getInsertId();
+        } 
+
+
+        $lastPostId=null;
+            if ($productData['postContent'] != '') {
+                //Nếu sản phẩm đã có Post rồi thì update lại post đ
+                $lastPostId = $this->savePostByProductId($productData['id'], $productData['postContent'], $productData['name']);
+            } 
+
+          //Nếu sản phẩm tồn tại UPDATE
             // $sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
             //Update Bài viết trước
             //Nếu người dùng có thêm bài viết
-            $lastPostId=null;
-            if ($productData['postContent'] != '') {
-                //Nếu sản phẩm đã có Post rồi thì update lại post đ
-                $lastPostId = $this->savePostByProductId($productData['id'], $productData['postContent']);
-            } 
+            
 
             if ($lastPostId) {
                 //Câu lệnh update sản phẩm có update set postId vì bài viêt được thêm mới
@@ -154,10 +171,6 @@ class default_model {
             // $sql = "UPDATE PRODUCTS P SET p.name=";
 
 
-        } else {
-            // Nếu sản phẩm không tồn tại thì INSERT
-
-        }
         return true;
     }
 
@@ -171,6 +184,13 @@ class default_model {
         if ($result==0) {
             return null;
         }
+        return $result;
+    }
+
+    public function deleteProductById($id) {
+        $sql = 'DELETE FROM PRODUCTS WHERE id='.$id;
+        $sql .= ' LIMIT 1';
+        $result = $this->db->execute($sql);
         return $result;
     }
 }
