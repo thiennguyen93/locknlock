@@ -8,9 +8,9 @@
 
     ?>
     <div class="card">
-        <!-- <div class="card-header">
-            <div class="card-title">Danh mục</div>
-        </div> -->
+        <div class="card-header">
+            <div class="card-title">Bảng chi tiết danh mục sản phẩm<a href="categories.php?action=add" class="btn btn-primary btn-border btn-round float-right btn-sm"><i class="la la-plus"></i> Thêm danh mục</a></div>
+        </div>
         <div class="card-body">
             <table class="table table-hover">
                 <thead>

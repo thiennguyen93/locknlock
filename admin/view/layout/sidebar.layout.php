@@ -62,7 +62,7 @@
 				<a href="posts.php">
 					<i class="la la-th"></i>
 					<p>Bài viết</p>
-					<span class="badge badge-count">6</span>
+					<span class="badge badge-count"><?=$data['global']['numberOfPosts']?></span>
 				</a>
 			</li>
 		</ul>

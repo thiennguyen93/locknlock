@@ -3,8 +3,9 @@
     width: 70px;
 } */
 .thumb-image {
+    max-height: 150px;
     height: auto;
-    width: 100%;
+    width: auto;
 }
 
 #image-holder-mini {

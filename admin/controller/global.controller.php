@@ -5,9 +5,11 @@ class globalController {
         $model = new global_default_model();
         $numberOfCategories = $model->getNumberCategory();
         $numberOfProducts = $model->getNumberOfProducts();
+        $numberOfPosts = $model->getNumberOfPosts();
         $info = [
             'numberOfCategories'=>$numberOfCategories,
             'numberOfProducts'=>$numberOfProducts,
+            'numberOfPosts'=>$numberOfPosts
         ];
         return $info;
     }

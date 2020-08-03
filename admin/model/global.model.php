@@ -20,5 +20,12 @@ class global_default_model {
         return $result['ketqua'];
     }  
 
+    public function getNumberOfPosts() {
+        $sql = 'SELECT COUNT(id) as ketqua FROM POSTS P';
+        $this->db->execute($sql);
+        $result = $this->db->getData();
+        return $result['ketqua'];
+    }  
+
 }
 ?>
