@@ -2,21 +2,22 @@
     <h4 class="page-title">Quản lý danh mục</h4>
     <div class="card">
         <div class="card-header">
-            <div class="card-title">Chỉnh sửa danh mục</div>
+            <div class="card-title"><?=$data['mode']=='add'?'Thêm danh mục':'Chỉnh sửa danh mục'?></div>
         </div>
-        <form action="" method="post">
+        <form action="categories.php?action=save" method="post" enctype='multipart/form-data'>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
+                        <input type="hidden" name="id" value='<?=$data['category']['id'] ?>'>
                         <div class="form-group">
                             <label for="squareInput">Tên danh mục</label>
-                            <input value='<?= $data['category']['name'] ?>' type="text"
+                            <input name='name' value='<?= $data['category']['name'] ?>' type="text"
                                 class="form-control input-square" id="squareInput" placeholder="Nhập tên danh mục"
                                 required>
                         </div>
                         <div class="form-group">
-                            <label for="squareSelect">Danh mục cha <em>(không được phép thay đổi)</em></label>
-                            <select class="form-control input-square" id="squareSelect" disabled name='categoryId'>
+                            <label for="squareSelect">Danh mục cha <em><?=$data['mode']=='add'?'':'(không được phép thay đổi)'?></em></label>
+                            <select name='categoryId' class="form-control input-square" id="squareSelect" <?=$data['mode']=='add'?'':'disabled'?> name='categoryId'>
                                 <option>(Không có danh mục cha)</option>
                                 <?php foreach ($data['allCategories'] as $value) { ?>
                                 <option value='<?= $value['id'] ?>'
@@ -28,17 +29,17 @@
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value=""
+                                <input  name='isFrontPage' class="form-check-input" type="checkbox" value="Y"
                                     <?= $data['category']['isFrontPage'] == 'Y' ? 'checked' : '' ?>>
                                 <span class="form-check-sign">Hiển thị trên trang chủ</span>
                             </label>
                             <br>
-                            <?php if ($data['category']['url_img'] != null || $data['category']['url_img'] != '') { ?>
+                            <!-- <?php if ($data['category']['url_img'] != null || $data['category']['url_img'] != '') { ?>
                             <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" value="">
                                 <span class="form-check-sign">Xoá ảnh thư mục hiện tại</span>
                             </label>
-                            <?php } ?>
+                            <?php } ?> -->
                         </div>
 
                     </div>
