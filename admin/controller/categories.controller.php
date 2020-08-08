@@ -65,26 +65,30 @@ class controller {
     }
 
 
-    public function save() {
-        var_dump($_POST);
-        exit();
-
-        
-
-
+    public function save() {   
         $categoryData = null;
         $categoryData['id'] = isset($_POST['id'])?(int)$_POST['id']:'';
         $categoryData['name'] = isset($_POST['name'])?$_POST['name']:'';
-        $categoryData['isFrontPage'] = (isset($_POST['isFrontPage']) && _POST['isFrontPage'] == 'Y')?$_POST['isFrontPage']:'N';
-
-
-
-
+        $categoryData['isFrontPage'] = (isset($_POST['isFrontPage']) && $_POST['isFrontPage'] == 'Y')?$_POST['isFrontPage']:'N';
+        $categoryData['parentId'] = isset($_POST['categoryId'])?$_POST['categoryId']:'';
+        $categoryData['description'] = isset($_POST['description'])?$_POST['description']:'';
         $model = new category_model();
         //Test
-        $count = $model->checkCategoryById($categoryData['id'] );
-        var_dump($count);
-        exit();
+        $sqlresult = $model->saveCategory($categoryData);
+        
+        if ($sqlresult == false) {
+            //update hoặc insert category thất bại
+            $data = [
+                'view' => 'error',
+                'errDetail' => 'Xảy ra lỗi trong quá trình lưu danh mục',
+                'errReturnLink' => 'categories.php'
+            ];
+        } else {
+            $_SESSION['notification'] = '<p class="text-success">Đã cập nhật thanh công Danh mục sản phẩm</strong></p>';
+            header('Location: categories.php?'.$post['return'].'&notification=show');
+            exit();
+        }
 
+        return true;
     }
 }

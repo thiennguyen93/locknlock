@@ -58,12 +58,12 @@ class category_model {
         return false;
     }
 
-    function saveCatgory ($categoryData) {
+    function saveCategory ($categoryData) {
         //UPLOAD HÌNH ẢNH 
-        $uploadedPhoto = $this->updateProductPhoto($categoryData['id']);
+        $uploadedPhoto = $this->updateCategoryPhoto($categoryData['id']);
 
         if ($uploadedPhoto) {
-            $sql_update_photo = ' ,P.thumbnail_url=\''.$uploadedPhoto.'\'';
+            $sql_update_photo = ' ,P.url_img=\''.$uploadedPhoto.'\'';
         } else {
             $sql_update_photo = '';
         }
@@ -74,11 +74,19 @@ class category_model {
         if (!$categoryExist) {
             //Nếu danh mục không tồn tại thi INSERT
             $sql = 'INSERT INTO CATEGORIES (name) VALUES (\''.$categoryData['name'].'\')';
-            var_dump($sql);
+            $this->db->execute($sql);
+            $categoryData['id'] =  $this->db->getInsertId();
         }
 
 
+        //Cập nhật lại CATEGORY vừa tạo
+        $sql = 'UPDATE categories P SET P.name = \''.$categoryData['name'].'\', P.description=\''.$categoryData['description'].'\''.$sql_update_photo.' ,P.isFrontPage=\''.$categoryData['isFrontPage'].'\', P.parentId = '.(isset($categoryData['parentId']) && !empty($categoryData['parentId'])?(int)$categoryData['parentId']:'NULL').', P.status=1'.' WHERE P.id='.$categoryData['id'];
+        $sql .= ' LIMIT 1';
 
+        
+        $sqlresult = $this->db->execute($sql);
+        
+        return $sqlresult;
 
     }
 
@@ -86,6 +94,8 @@ class category_model {
         $target_dir    = "../img/categories/";
         $maxfilesize   = 800000; //(bytes)
         $allowUpload = false;
+
+        if (!isset($_FILES['photo'])) return false;
 
         if ($_FILES['photo']['size'] > 0 && $_FILES['photo']['size'] < $maxfilesize )  {
             $allowUpload = true;

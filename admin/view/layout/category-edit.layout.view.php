@@ -15,10 +15,15 @@
                                 class="form-control input-square" id="squareInput" placeholder="Nhập tên danh mục"
                                 required>
                         </div>
+                        <div class="form-group">Mô tả</label>
+                            <input name='description' value='<?= $data['category']['description'] ?>' type="text"
+                                class="form-control input-square" id="squareInput" placeholder="Nhập tên danh mục"
+                                required>
+                        </div>
                         <div class="form-group">
                             <label for="squareSelect">Danh mục cha <em><?=$data['mode']=='add'?'':'(không được phép thay đổi)'?></em></label>
                             <select name='categoryId' class="form-control input-square" id="squareSelect" <?=$data['mode']=='add'?'':'disabled'?> name='categoryId'>
-                                <option>(Không có danh mục cha)</option>
+                                <option value=''>(Không có danh mục cha)</option>
                                 <?php foreach ($data['allCategories'] as $value) { ?>
                                 <option value='<?= $value['id'] ?>'
                                     <?= $value['id'] == $data['category']['parentId'] ? 'selected' : '' ?>>
@@ -47,7 +52,7 @@
                         <div class="pl-2" id="wrapper">
                             <span class="form-check-sign">Chọn ảnh cho danh mục (khi cần hiển thị trên trang chủ)</span>
                             <br>
-                            <input id="fileUpload" type="file" multiple />
+                            <input name='photo' id="fileUpload" type="file" multiple />
                             <br />
                             <div class="my-3 image-holder1" id="image-holder">
                                 <img class="thumb-image" src="../img/categories/<?= $data['category']['url_img'] ?>"
