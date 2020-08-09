@@ -12,6 +12,16 @@
             <div class="card-title">Bảng chi tiết danh mục sản phẩm<a href="categories.php?action=add" class="btn btn-primary btn-border btn-round float-right btn-sm"><i class="la la-plus"></i> Thêm danh mục</a></div>
         </div>
         <div class="card-body">
+            <div class="notification">
+                <?php $notification = isset($_GET['notification'])?$_GET['notification']:''; 
+                        $notificationContent = isset($_SESSION['notification'])?$_SESSION['notification']:'';
+                    if ($notification == 'show') {
+                        echo $notificationContent;
+                    } 
+                    unset($notificationContent);
+                    unset($_SESSION['notification']);
+                ?>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>

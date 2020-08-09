@@ -125,18 +125,22 @@ class category_model {
     public function deleteCategoryById($id) {
         //Tìm xem danh mục đó có danh mục con hay không
         $sql = 'SELECT COUNT(id) as ketqua FROM CATEGORIES C WHERE C.parentId='.$id;
+        
+
+
         $this->db->execute($sql);
         $sqlresult = $this->db->getData();
         $numberOfChild = (int)$sqlresult['ketqua'];
         
-
+        
+        
         //Nếu danh mục đang có danh mục con thì không cho phép user xóa danh mục đó
         if ($numberOfChild>0) {
             return -1;
-            exit();
         }
 
-        $sql = 'UPDATE CATEGORIES P SET P.status=0 WHERE P.id='.$id;
+        $sql = 'DELETE FROM CATEGORIES WHERE id='.$id;
+        $sql .= ' LIMIT 1';
         $sqlresult = $this->db->execute($sql);
         return $sqlresult; 
     }

@@ -106,16 +106,14 @@ class controller {
         if ($id != null) {
             //Nếu danh mục sản phẩm tồn tại thì xóa đi
             $result = $model->deleteCategoryById($id);
-            if ($result == -1) {
-                $data = [
-                    'view' => 'error',
-                    'errDetail' => 'Không được phép xóa danh mục có danh mục con!',
-                    'errReturnLink' => 'categories.php?notification=show'
-                ];
+            if ($result <0) {
+                $_SESSION['notification'] = '<p class="text-danger">Không được xóa danh mục có danh mục con</strong></p>';
+                header('Location: categories.php?notification=show');
+                exit();
             } else if ($result==true) {
                 $_SESSION['notification'] = '<p class="text-success">Đã xóa danh mục thành công</strong></p>';
-                    header('Location: categories.php?notification=show');
-                    exit();
+                header('Location: categories.php?notification=show');
+                exit();
             }
         } 
 

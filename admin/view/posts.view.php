@@ -52,7 +52,6 @@
                     unset($notificationContent);
                     unset($_SESSION['notification']);
                 ?>
-                
             </div>
             <?php if (count($data['postList'])>0) { ?>
             <div class="table-responsive">
