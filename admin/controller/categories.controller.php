@@ -80,7 +80,7 @@ class controller {
             //update hoặc insert category thất bại
             $data = [
                 'view' => 'error',
-                'errDetail' => 'Xảy ra lỗi trong quá trình lưu danh mục',
+                'errDetail' => 'Xảy ra lỗi trong quá trình lưu danh mục sản phẩm',
                 'errReturnLink' => 'categories.php'
             ];
         } else {
@@ -90,5 +90,35 @@ class controller {
         }
 
         return true;
+    }
+
+    public function delete() {
+        //Data mặc định
+        $data = [
+            'view' => 'error',
+            'errDetail' => 'Xảy ra lỗi trong quá trình xóa danh mục sản phẩm',
+            'errReturnLink' => 'categories.php'
+        ];
+
+
+        $id = isset($_GET['id'])?(int)$_GET['id']:null;
+        $model = new category_model();
+        if ($id != null) {
+            //Nếu danh mục sản phẩm tồn tại thì xóa đi
+            $result = $model->deleteCategoryById($id);
+            if ($result == -1) {
+                $data = [
+                    'view' => 'error',
+                    'errDetail' => 'Không được phép xóa danh mục có danh mục con!',
+                    'errReturnLink' => 'categories.php?notification=show'
+                ];
+            } else if ($result==true) {
+                $_SESSION['notification'] = '<p class="text-success">Đã xóa danh mục thành công</strong></p>';
+                    header('Location: categories.php?notification=show');
+                    exit();
+            }
+        } 
+
+        return $data;
     }
 }

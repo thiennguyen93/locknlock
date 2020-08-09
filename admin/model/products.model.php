@@ -187,7 +187,7 @@ class default_model {
         return $result;
     }
 
-    public function deleteProductById($id) {
+    public function deleteProductById($id) {    
         $sql = 'DELETE FROM PRODUCTS WHERE id='.$id;
         $sql .= ' LIMIT 1';
         $result = $this->db->execute($sql);
