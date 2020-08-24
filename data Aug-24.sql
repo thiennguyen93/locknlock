@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Đơn hàng';
 
--- Dumping data for table locknlock.orders: 1 rows
+-- Dumping data for table locknlock.orders: 2 rows
 DELETE FROM `orders`;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 INSERT INTO `orders` (`id`, `user_id`, `order_code`, `date_created`, `payment_status`, `delivery_status`) VALUES
