@@ -9,7 +9,7 @@ class default_model {
 
     public function getAllOrdersByUserID($userId) {
         //Lấy tất cả các đƠn hàng của một người dùng
-        $sql = 'SELECT * FROM orders A INNER JOIN users B ON A.user_id = B.id WHERE B.id=\''.$userId.'\'';
+        $sql = 'SELECT a.id, a.order_code, a.date_created, CASE WHEN a.payment_status=0 THEN \'Đã thanh toán\' ELSE \'Chưa thanh toán\' END AS tinhtrangthanhtoan  , A.delivery_status, B.username, count(c.product_id), SUM(c.product_price * c.product_quantity) AS tonggiatri FROM (orders A INNER JOIN users B ON A.user_id = B.id) right JOIN order_detail c ON c.order_id = A.id WHERE B.id=\''.$userId.'\' GROUP BY a.id';
         $this->db->execute($sql);
         return $this->db->getAllData();
     }

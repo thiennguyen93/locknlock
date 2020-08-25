@@ -14,14 +14,15 @@ class controller
     public function default(){
         $model = new default_model();
         $orders = [];
-        var_dump($_SESSION['user_info']);
         if (isset($_SESSION['user_info'])) {
             //Nếu user đã đăng nhập thì load tất cả các đơn hàng của user
             $orders = $model->getAllOrdersByUserID($_SESSION['user_info']['id']);
-            var_dump($orders);
-            exit();
         }
-        $data = null;
+        var_dump($orders);
+        $data = [
+            'view'=> 'order',
+            'orders'=> $orders
+        ];
         return $data;
     }
 }
