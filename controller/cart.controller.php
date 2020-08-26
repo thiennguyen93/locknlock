@@ -1,6 +1,6 @@
 <?php
 include './model/cart.model.php';
-include './model/product.model.php';
+include './model/master_data.model.php';
 class controller
 {
     public function addToCart($id, $quantity=1) {
@@ -12,8 +12,15 @@ class controller
 
 
     public function default(){
-            $data = [];
-            //Nếu user đã đăng nhập thì load tât
+            $result = null;
+            $model = new cart_model();
+            $cartSession = $model->getCartSession();
+            
+            $data = [
+                'view' => 'cart',
+                'cartSession' => $cartSession
+            ];
+
            return $data;
     }
 }
