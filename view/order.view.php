@@ -1,5 +1,6 @@
 <?php 
     include_once('./view/layout/breadcrumb.php');
+    $masterData = new master_data_model();
 ?>
 <div class="container">
 <div class="card">
@@ -70,12 +71,12 @@
                     <thead>
                         <tr>
                             <th class="text-center" style="width: 5%">STT</th>
-                            <th style="width: 30%">Mã đơn hàng</th>
-                            <th style="width: 15%">Tổng sản phẩm</th>
-                            <th style="width: 10%">Giá trị</th>
-                            <th style="width: 15%">Thanh toán</th>
-                            <th style="width: 15%">Vận chuyển</th>
-                            
+                            <th class="text-center" style="width: 18%">Ngày lập</th>
+                            <th class="text-center" style="width: 17%">Mã đơn hàng</th>
+                            <th class="text-center" style="width: 10%">Tổng sản phẩm</th>
+                            <th class="text-center" style="width: 15%">Tổng giá trị</th>
+                            <th class="text-center" style="width: 18%">Thanh toán</th>
+                            <th class="text-center" style="width: 20%">Vận chuyển</th>
                             <th class="text-center" style="width: 10%">Thao tác</th>
                         </tr>
                     </thead>
@@ -83,11 +84,12 @@
                         <?php foreach ($data['orders'] as $key => $value) { ?>
                             <tr>
                                 <th scope="row" class="text-center">1</th>
-                                <td><?=$value['order_code']?></td>
-                                <td></td>
-                                <td>749,000 đ</td>
-                                <td>Nồi chảo/ Nồi áp suất</td>
-                                <td>Nồi chảo/ Nồi áp suất</td>
+                                <td class="text-center" ><?=$value['date_created']?></td>
+                                <td class="text-center" ><?=$value['order_code']?></td>
+                                <td class="text-center" ><?=$value['quantity']?></td>
+                                <td class="text-center" ><?=number_format($value['payment_total'])?>đ</td>
+                                <td class="text-center" ><?=$masterData->getMasterData('TRANGTHAITHANHTOAN',$value['payment_status'])[0]['name']?></td>
+                                <td class="text-center" ><?=$masterData->getMasterData('TRANGTHAIVANCHUYEN',$value['delivery_status'])[0]['name']?></td>
                                 <td class="text-center">
                                     <a href="?action=edit&amp;id=8&amp;return=%26page%3D1" class="btn btn-success text-white btn-sm"><i class="la la-edit"></i></a>
                                     <button data-return="%26page%3D1" data-action="delete_product" data-item="eyJpZCI6IjgiLCJuYW1lIjoiTlx1MWVkM2kgbmhcdTAwZjRtIGNoXHUxZWQxbmcgZFx1MDBlZG5oIEJBVU0gTWFyYmxlIDI0Y20sIDIgdGF5IGNcdTFlYTdtLCBuXHUxZWFmcCB0aFx1MWVlN3kgdGluaCwgaGlcdTFlYzd1IEwmTCIsInByaWNlIjoiNzQ5MDAwIiwiY2F0TmFtZSI6Ik5cdTFlZDNpIGNoXHUxZWEzb1wvIE5cdTFlZDNpIFx1MDBlMXAgc3VcdTFlYTV0IiwiZGVzY3JpcHRpb24iOm51bGwsInRodW1ibmFpbF91cmwiOiI3LmpwZyIsImNhdGVnb3J5SWQiOiIxNiIsImNyZWF0ZWQiOiIyMDIwLTA3LTE2IDE0OjQxOjI5In0=" type="button" data-toggle="modal" data-target="#modalUpdate" data-whatever="product" href="?action=delete&amp;id=8" class="btn btn-danger text-white btn-sm"><i class="la la-trash"></i></button>

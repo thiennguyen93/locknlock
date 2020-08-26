@@ -1,5 +1,6 @@
 <?php
 include './model/order.model.php';
+include './model/master_data.model.php';
 // include './model/product.model.php';
 class controller
 {
