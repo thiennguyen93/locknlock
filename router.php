@@ -1,4 +1,5 @@
 <?php
+
 $controller = isset($controller) ? $controller : 'index';
 $action = isset($_GET['action']) ? $_GET['action'] : 'default'; //Mặc định là action default
 

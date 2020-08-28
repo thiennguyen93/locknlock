@@ -1,5 +1,6 @@
 <!-- TRANG SẢN PHẨM -->
 <?php
+session_start();
 $controller = 'cart';
 include './lib/database.php';
 include 'router.php';
