@@ -12,6 +12,8 @@
             <h5><?=$data['product']['name']?></h5>
             <p><?=$data['product']['description']?></p>
         </div>
+        <form action="cart.php">
+        <input type="hidden" name="action" value='add'>
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <img class='product-detail-img' src="./img/products/<?=$data['product']['thumbnail_url']?>" alt="" srcset="">
@@ -26,12 +28,16 @@
                     <div class="col-9 ">
                         <div class="form-group form-inline">
                             <label for=""></label>
-                            <input type="number" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Nhập số lượng cần mua" value="1">
+                            <input type="hidden" name="id" value="<?=$data['product']['pID']?>">
+                            <input type="number" class="form-control" name="quantity" id="" aria-describedby="helpId" placeholder="Nhập số lượng cần mua" value="1">
+                            <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
+
     </div>
     <div class="product-detail-content">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

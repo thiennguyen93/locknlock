@@ -12,6 +12,7 @@ class controller
         }
         $model = new default_model();
         $data = $model->getProductInfo($id);
+        
         return [
             'view' => 'product_detail',
             'product' => $data

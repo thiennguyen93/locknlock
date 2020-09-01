@@ -70,12 +70,10 @@
           <thead>
             <tr>
               <th class="text-center" style="width: 5%;">STT</th>
-              <th class="text-center" style="width: 18%;">Ngày lập</th>
-              <th class="text-center" style="width: 17%;">Mã đơn hàng</th>
-              <th class="text-center" style="width: 10%;">Tổng sản phẩm</th>
-              <th class="text-center" style="width: 15%;">Tổng giá trị</th>
-              <th class="text-center" style="width: 18%;">Thanh toán</th>
-              <th class="text-center" style="width: 20%;">Vận chuyển</th>
+              <th class="text-center" style="width: 25%;">Tên sản phẩm</th>
+              <th class="text-center" style="width: 17%;">Đơn giá</th>
+              <th class="text-center" style="width: 10%;">Số lượng</th>
+              <th class="text-right" style="width: 10%;">Thành tiền</th>
               <th class="text-center" style="width: 10%;">Thao tác</th>
             </tr>
           </thead>
@@ -83,41 +81,21 @@
             <?php foreach ($data['cartSession'] as $key =>
             $value) { ?>
             <tr>
-              <th scope="row" class="text-center">1</th>
-              <td class="text-center"><?=$value['date_created']?></td>
-              <td class="text-center"><?=$value['order_code']?></td>
-              <td class="text-center"><?=$value['quantity']?></td>
-              <td class="text-center">
-                <?=number_format($value['payment_total'])?>đ
+              <th scope="row" class="text-center"><?=$key?></th>
+              <td class="text-center"><?=$value['name']?></td>
+              <td class="text-center"><?=number_format($value['price'])?>đ</td>
+              <td class="text-center"><?=($value['quantity']<10 && $value['quantity']) > 0?'0':''?><?=number_format($value['quantity'])?> <?=$value['unit']?></td>
+              <td class="text-right">
+                <?=number_format($value['price']*$value['quantity'])?>đ
               </td>
               <td class="text-center">
-                <?=$masterData->getMasterData('TRANGTHAITHANHTOAN',$value['payment_status'])[0]['name']?>
-              </td>
-              <td class="text-center">
-                <?=$masterData->getMasterData('TRANGTHAIVANCHUYEN',$value['delivery_status'])[0]['name']?>
-              </td>
-              <td class="text-center">
-                <a
-                  href="?action=edit&amp;id=8&amp;return=%26page%3D1"
-                  class="btn btn-success text-white btn-sm"
-                  ><i class="la la-edit"></i
-                ></a>
-                <button
-                  data-return="%26page%3D1"
-                  data-action="delete_product"
-                  data-item="eyJpZCI6IjgiLCJuYW1lIjoiTlx1MWVkM2kgbmhcdTAwZjRtIGNoXHUxZWQxbmcgZFx1MDBlZG5oIEJBVU0gTWFyYmxlIDI0Y20sIDIgdGF5IGNcdTFlYTdtLCBuXHUxZWFmcCB0aFx1MWVlN3kgdGluaCwgaGlcdTFlYzd1IEwmTCIsInByaWNlIjoiNzQ5MDAwIiwiY2F0TmFtZSI6Ik5cdTFlZDNpIGNoXHUxZWEzb1wvIE5cdTFlZDNpIFx1MDBlMXAgc3VcdTFlYTV0IiwiZGVzY3JpcHRpb24iOm51bGwsInRodW1ibmFpbF91cmwiOiI3LmpwZyIsImNhdGVnb3J5SWQiOiIxNiIsImNyZWF0ZWQiOiIyMDIwLTA3LTE2IDE0OjQxOjI5In0="
-                  type="button"
-                  data-toggle="modal"
-                  data-target="#modalUpdate"
-                  data-whatever="product"
-                  href="?action=delete&amp;id=8"
-                  class="btn btn-danger text-white btn-sm"
-                >
-                  <i class="la la-trash"></i>
-                </button>
-                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button> -->
+
               </td>
             </tr>
+            <?php } ?>
+            <?php if (count($data['cartSession']) > 0) { ?>
+              <td class="text-right" colspan="4"><strong>Tổng cộng:</strong></td>
+              <td class="text-right"><strong><?=number_format($data['sum'])?>đ</strong></td>
             <?php } ?>
           </tbody>
         </table>
@@ -132,31 +110,7 @@
         <?php } ?>
     </div>
     <div class="card-footer">
-      <ul class="pagination pg-primary">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">«</span>
-            <span class="sr-only">Trang trước</span>
-          </a>
-        </li>
 
-        <li class="page-item active">
-          <a class="page-link" href="?page=1">1</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-        <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
-
-        <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-
-        <li class="page-item">
-          <a class="page-link" href="?page=2" aria-label="Next">
-            <span aria-hidden="true">»</span>
-            <span class="sr-only">Tiếp theo</span>
-          </a>
-        </li>
-      </ul>
     </div>
   </div>
 </div>

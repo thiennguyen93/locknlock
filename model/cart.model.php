@@ -17,6 +17,15 @@ class cart_model {
         }
     }
 
+    function sum_cart(){
+        $sum = 0;
+        if (!isset($_SESSION['cart'])) return 0;
+        foreach ($_SESSION['cart'] as $key => $value) {
+            $sum += ($value['quantity']*$value['price']);
+        }
+        return $sum;
+    }
+
     function addCartSession($id, $quantity=1) {
         //Lấy thông tin sản phẩm 
         if (self::checkProductExit($id)) {
@@ -24,13 +33,13 @@ class cart_model {
             $sql = 'SELECT * FROM PRODUCTS P where P.id = ' . $id . ' LIMIT 1';
             $this->db->execute($sql);
             $item =$this->db->getData();
-            if (isset($_SESSION['cart'][''.$id])) {
+            if (isset($_SESSION['cart'][$id])) {
                 //Nếu sản phẩm đã tồn tại trong giỏ hàng thì cập nhật lại số lượng sản phẩm
                 $_SESSION['cart'][''.$id]['quantity'] += $quantity;
             } else {
                 //Nếu sản phẩm chưa có trong giỏ hàng thì thêm sản phẩm vào giỏ hàng
-                $_SESSION['cart'][''.$id] = $item;
-                $_SESSION['cart'][''.$id]['quantity'] = $quantity;
+                $_SESSION['cart'][$id] = $item;
+                $_SESSION['cart'][$id]['quantity'] = $quantity;
             }
             return true;
         } 
@@ -38,14 +47,12 @@ class cart_model {
     }
 
     function getCartSession() {
-        if (!isset($_SESSION['cart'])){
+        if (isset($_SESSION['cart'])){
             $result = $_SESSION['cart'];
         } else {
             $result = null;
         }
         return $result;
     }
-    
-
     
 }
