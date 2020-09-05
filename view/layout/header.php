@@ -27,7 +27,7 @@
         </div>
         <ul class='right-icon'>
             <li>
-                <a href="#">
+                <a href="cart.php">
                     <img src="./img/skin/top_icon_cart.png" alt="Sự kiện">
                 </a>
             </li>

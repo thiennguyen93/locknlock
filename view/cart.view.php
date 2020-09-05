@@ -89,7 +89,7 @@
                 <?=number_format($value['price']*$value['quantity'])?>đ
               </td>
               <td class="text-center">
-
+                <a href="#" class='btn btn-outline-danger'><i class="fas fa-trash-alt"></i>Xoá</a>
               </td>
             </tr>
             <?php } ?>
@@ -99,6 +99,11 @@
             <?php } ?>
           </tbody>
         </table>
+        <!-- Nút thanh toán -->
+        <div class="text-right">
+          <!-- <a href="#" class='btn btn-outline-primary'>Tiếp tục mua sắm</a> -->
+          <a href="#" class='btn btn-outline-primary'>Thanh toán</a>
+        </div>
       </div>
         <?php } else {?>
             <div class="text-center">
