@@ -20,8 +20,8 @@
                 </a>
             </li>
         </ul>
-        <div id="logo">
-            <a href="#">
+        <div id="logo" <?=$activePage=='index'?'active':'' ?>>
+            <a href="index.php">
                 <img src="./img/skin/logo.png" alt="Sự kiện">
             </a>
         </div>
@@ -68,7 +68,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control-sm" placeholder="Tìm kiếm">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary btn-sm" type="button">Button</button>
+                        <button class="btn btn-secondary btn-sm" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </form>

@@ -1,3 +1,6 @@
+<?php
+    $activePrice = isset($_GET['activePrice'])?$_GET['activePrice']:'index';
+?>
 <?php 
     include_once('./view/layout/breadcrumb.php');
     $masterData = new master_data_model();
@@ -100,9 +103,9 @@
           </tbody>
         </table>
         <!-- Nút thanh toán -->
-        <div class="text-right">
+        <div class="text-right" <?=$activePrice=='index'?'active':'' ?>>
           <!-- <a href="#" class='btn btn-outline-primary'>Tiếp tục mua sắm</a> -->
-          <a href="#" class='btn btn-outline-primary'>Thanh toán</a>
+          <a href="price.php" class='btn btn-outline-primary'>Thanh toán</a>
         </div>
       </div>
         <?php } else {?>
