@@ -33,5 +33,26 @@ class controller
            return $data;
     }
 
+    public function delete() {
+        try {
+            $id = isset($_GET['id'])?$_GET['id']:'';
+            unset($_SESSION['cart'][$id]);
+        } catch (Exception $e) {
+            echo $e;
+        }
+        
+        
+
+        $result = null;
+        $model = new cart_model();
+        $cartSession = $model->getCartSession();
+        $sum = $model->sum_cart();
+        $data = [
+            'view' => 'cart',
+            'cartSession' => $cartSession,
+            'sum'=>$sum
+        ];
+       return $data;
+    }
 
 }

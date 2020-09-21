@@ -10,7 +10,7 @@
                         <input type="hidden" name="userId" value="">
                         <div class="form-group">
                             <label for="name">Họ Tên</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nhập tên" required="" value="">
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nhập tên" required="" value="<?=isset($_SESSION['user_info']['hoten'])?$_SESSION['user_info']['hoten']:''?>">
                             <p></p>
                             <label for="name">Số Điện Thoại</label>
                             <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nhập số điện thoại" required="" value="">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Địa chỉ email</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Nhập địa chỉ email" required="">
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Nhập địa chỉ email" required="" value=<?=isset($_SESSION['user_info']['email'])?$_SESSION['user_info']['email']:''?>>
                             <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không chia sẽ email của bạn với bất kỳ ai</small>
                         </div>
                         <div class="form-group">

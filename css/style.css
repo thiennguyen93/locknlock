@@ -352,12 +352,22 @@ a:hover, a:focus {
     }
  }
 
+ @media (min-width: 100px) and (max-width: 575.98px) { 
+    #logo {
+        display: none;
+    }
+    .catImg {
+        display: none;
+    }
+ }
+
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) { 
     #header-2 > #logo {
-        position: absolute;
+        /* position: absolute;
         top: -30px;
-        left: 23%;
+        left: 23%; */
+        display: none;
     }
     .catImg {
         display: none;

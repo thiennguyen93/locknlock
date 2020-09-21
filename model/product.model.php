@@ -30,11 +30,13 @@ class default_model {
         $whereClause .= ' AND '. ($productName!=''?'P.name LIKE \'%'.$productName.'%\'':'2=2');
         $sql = 'SELECT P.id, P.name, p.price, c.name as catName, p.description, p.thumbnail_url, p.categoryId FROM PRODUCTS P INNER JOIN CATEGORIES C ON P.categoryID = C.id' . $whereClause;
         $sql .= ' LIMIT '.$offset.','.$itemsPerPage;
+        // var_dump($sql );
         $this->db->execute($sql);
         $result = $this->db->getAllData();  //Lấy sản phẩm thoả điều kiện
         //Lấy tổng số sản phẩm
         
         $sql_count = 'SELECT count(P.id) as ketqua FROM PRODUCTS P INNER JOIN CATEGORIES C ON P.categoryID = C.id' . $whereClause;
+
         $this->db->execute($sql_count);
         $totalProducts = $this->db->getData();
         $totalProducts = $totalProducts['ketqua'];

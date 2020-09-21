@@ -55,16 +55,13 @@
                 <a class="nav-link <?=$activePage=='index'?'active':'' ?>" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="products.php">Sản phẩm mới</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link <?=$activePage=='about'?'active':'' ?>" href="post.php?id=2&activePage=about">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?=$activePage=='contact'?'active':'' ?>" href="contact.php?activePage=contact">Liên hệ</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" action='' method="GET">
                 <div class="input-group">
                     <input type="text" class="form-control-sm" placeholder="Tìm kiếm">
                     <div class="input-group-append">

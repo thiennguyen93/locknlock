@@ -19,9 +19,6 @@
         </div>
         <?php } ?>
     </div>
-    <?php
-        var_dump($data['totalPages']);
-    ?>
     <div class="card-footer">
         <?php if ($data['totalPages'] >1) { ?>
             <ul class="pagination pg-primary">

@@ -19,16 +19,16 @@
                                     {
                             ?>
                             <li class="">
-                                <a href="#"><?=$item['name']?></a>
+                                <a href="category.php?id=<?=$item['id']?>"><?=$item['name']?></a>
                                 <div class="area_n_category">
                                     <div class="box_n_category">
-                                        <h3><a href="#"><?=$item['name']?></a></h3>
+                                        <h3><a href="category.php?id=<?=$item['id']?>"><?=$item['name']?></a></h3>
                                         <ul class="list_n_category_1">
                                         <?php foreach($categoryData as $childKey => $childItem) {
                                             if ( $childItem['parentId'] == $item['id'] )
                                             {
                                              ?>
-                                            <li><a href="/goods/category.asp?cate=655&amp;BannerID=10023"><?=$childItem['name']?></a>
+                                            <li><a href="category.php?id=<?=$childItem['id']?>"><?=$childItem['name']?></a>
                                             </li>
                                             <?php }
                                         }?>
@@ -68,7 +68,7 @@
 
 
             <!-- Sản phẩm bán chạy -->
-            <div class="zone">
+            <!-- <div class="zone">
                 <div class="zone_title">
                     <span class="zone_caption text-uppercase ">Sản phẩm mới</span>
                     <span class="more ml-3"><a href="/goods/best.asp?mall_type=0&amp;BannerID=10034"> Xem thêm</a>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- /Sản phẩm bán chạy -->
             <div class="thanh_ngan_cach"></div>
         </div>

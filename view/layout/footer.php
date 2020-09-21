@@ -32,9 +32,9 @@
         <div id="footer-menu" class=" mt-2">
             <div class="container">
                 <ul class="row mt-2">
-                    <li><a href="">Giới thiệu công ty</a></li>
-                    <li><a href="">Điều khoản</a></li>
-                    <li><a href="">Chính sách xử lý thông tin</a></li>
+                    <li><a href="./post.php?id=2&activePage=about">Giới thiệu công ty</a></li>
+                    <li><a href="./post.php?id=3&activePage=about">Điều khoản</a></li>
+                    <li><a href="./post.php?id=4&activePage=about">Chính sách xử lý thông tin</a></li>
                     <li><a href="">Từ chối thư rác</a></li>
                     <li><a href="">Chăm sóc khách hàng</a></li>
                     <li><a href="">Sơ đồ</a></li>

@@ -5,7 +5,7 @@
     </div>
     <?php
     foreach ($data['data'] as $key => $item) {
-        // var_dump($item['product']); 
+        // var_dump($item['cat']); 
     ?>
         <div class="mb-5">
 
@@ -14,7 +14,7 @@
                     <li>
                         <p><?= $item['cat']['name'] ?></p>
                         <span>
-                            <a href="http://118.69.170.90/goods/category.asp?cate=124">Xem thêm &gt;</a>
+                            <a href="http://localhost/locknlock/category.php?id=<?=$item['cat']['id']?>">Xem thêm &gt;</a>
                         </span>
                     </li>
                 </ul>

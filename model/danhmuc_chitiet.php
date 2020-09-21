@@ -59,7 +59,7 @@ class danhmuc_chitiet {
         if ($cat2_id) {
             $where =  'where id = "' . $cat2_id . '" and id_danhmuc1="' . $cat1_id . '"';
             $this->db->execute('select ten from danhmuc2 '. $where);
-            var_dump('select ten from danhmuc2 '. $where);
+            // var_dump('select ten from danhmuc2 '. $where);
             $tendanhmuc2 = $this->db->getData();
             $result =  $result . " > <span style='color: red'>" . $tendanhmuc2['ten'] . "</span>";
         }
